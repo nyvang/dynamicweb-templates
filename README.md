@@ -1,0 +1,4 @@
+templates
+=========
+
+Dynamicweb example templates
