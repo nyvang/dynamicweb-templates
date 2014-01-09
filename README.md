@@ -9,4 +9,4 @@ Example templates for publishing an RSS feed with products to be consumed by Goo
 ### Installation
 
 1. Copy the layout file [RssFeed.xml](Designs/RssFeed/RssFeed.xml) and the [RssFeed](Designs/RssFeed/RssFeed/) folder to a Dynamicweb design folder.
-2. Read [...] to set up pages and paragraphs to publish the RSS feed
+2. Read [How to setup Google Merchant Feed](http://developer.dynamicweb-cms.com/documentation/for-developers/product-publishing/how-to-setup-google-merchant-feed.aspx) for details on how to set up pages and paragraphs to publish the RSS feed
