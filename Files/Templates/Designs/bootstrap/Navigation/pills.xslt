@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 	<xsl:output method="xml" omit-xml-declaration="yes" indent="yes"  encoding="utf-8" />
-	<xsl:param name="html-content-type" />
+
+	<xsl:variable name="nav-class">
+		<xsl:text>nav nav-pills </xsl:text>
+    <xsl:value-of select="//LayoutNavigationAttributes/@class"/>
+	</xsl:variable>
 
 	<xsl:template match="/NavigationTree">
 		<xsl:if test="Page">
-			<ul class="nav navbar-nav">
+			<ul class="{normalize-space($nav-class)}">
 				<xsl:apply-templates select="Page"/>
 			</ul>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="/NavigationTree//Page">
+	<xsl:template match="Page">
 		<li>
 			<xsl:variable name="class">
 				<xsl:if test="@InPath = 'True'"> active </xsl:if>
