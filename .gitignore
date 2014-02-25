@@ -15,9 +15,14 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
+obj/
+bin/
+packages/
+packages.config
 
 #############
 ## Dynamicweb
 #############
 
 _parsed/
+.sass-cache/
