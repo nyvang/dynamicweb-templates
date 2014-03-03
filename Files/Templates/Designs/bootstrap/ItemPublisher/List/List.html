@@ -1,0 +1,72 @@
+﻿<div class="items">
+  <div class="table-responsive">
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <!--@LoopStart(ItemPublisher:ItemType.Fields)-->
+          <th><!--@ItemPublisher:ItemType.Field.Name--></th>
+					<!--@LoopEnd(ItemPublisher:ItemType.Fields)-->
+          <th><!--@Translate(ItemPublisher:Item.DetailsUrl, "View")--></th>
+					<!--@If Defined(ItemPublisher:Items.CanEdit)-->
+          <th><!--@Translate(ItemPublisher:Item.Edit, "Edit")--></th>
+          <!--@EndIf-->
+        </tr>
+      </thead>
+      <tbody>
+        <!--@LoopStart(ItemPublisher:Items.List)-->
+        <tr onclick="location.href = '<!--@ItemPublisher:Item.Url-->';">
+          <!--@LoopStart(ItemPublisher:Item.Fields)-->
+          <td>
+            <!--@ItemPublisher:Item.Field.Value-->
+          </td>
+          <!--@LoopEnd(ItemPublisher:Item.Fields)-->
+          <td>
+            <a href="<!--@ItemPublisher:Item.DetailsUrl-->"><!--@Translate(ItemPublisher:Item.DetailsUrl, "View")--></a>
+          </td>
+          <!--@If Defined(ItemPublisher:Item.CanEdit)-->
+          <td>
+            <a href="<!--@ItemPublisher:Item.EditUrl-->"><!--@Translate(ItemPublisher:Item.Edit, "Edit")--></a>
+          </td>
+          <!--@EndIf-->
+        </tr>
+        <!--@LoopEnd(ItemPublisher:Items.List)-->
+      </tbody>
+    </table>
+  </div>
+
+  <!--@If(ItemPublisher:Items.Paging.TotalPages>1)-->
+  <ul class="pagination">
+    <!--@If(ItemPublisher:Items.Paging.CurrentPage>1)-->
+		<li>
+			<a href="<!--@ItemPublisher:Items.Paging.PrevPage-->"><!--@Translate(PreviousPage, "&laquo;")--></a>
+		</li>
+		<!--@Else-->
+    <li class="disabled">
+      <span><!--@Translate(PreviousPage, "&laquo;")--></span>
+    </li>
+		<!--@EndIf-->
+
+    <!--@LoopStart(ItemPublisher:Items.Paging.Pages)-->
+		<!--@If Defined(ItemPublisher:Items.Paging.Pages.Page.IsCurrent)-->
+    <li class="active">
+      <span><!--@ItemPublisher:Items.Paging.Pages.Page.Number--></span>
+		</li>
+    <!--@Else-->
+		<li>
+      <a href="<!--@ItemPublisher:Items.Paging.Pages.Page.Url.HtmlEncoded()-->"><!--@ItemPublisher:Items.Paging.Pages.Page.Number--></a>
+    </li>
+		<!--@EndIf-->
+    <!--@LoopEnd(ItemPublisher:Items.Paging.Pages)-->
+
+		<!--@If(ItemPublisher:Items.Paging.TotalPages>ItemPublisher:Items.Paging.CurrentPage)-->
+		<li>
+			<a href="<!--@ItemPublisher:Items.Paging.NextPage-->"><!--@Translate(NextPage, "&raquo;")--></a>
+		</li>
+		<!--@Else-->
+		<li class="disabled">
+			<span><!--@Translate(NextPage, "&raquo;")--></span>
+		</li>
+		<!--@EndIf-->
+  </ul>
+	<!--@EndIf-->
+</div>

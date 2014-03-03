@@ -1,0 +1,32 @@
+﻿<div class="items">
+  <div class="edit-form">
+		<!--@ItemPublisher:Edit.Form.Begin-->
+
+    <!--@ItemPublisher:Edit.Form-->
+
+		<!--@LoopStart(ValidationErrors)-->
+		<!--@HeaderStart-->
+		<div class="validation-error">
+			<!--@Translate(ItemPublisher:Edit.SaveError, "Item not saved!")-->
+			<ul>
+				<!--@HeaderEnd-->
+				<li><!--@ItemPublisher:Edit.Validation.FieldName-->: <!--@ItemPublisher:Edit.Validation.Error--></li>
+				<!--@FooterStart-->
+			</ul>
+		</div>
+		<!--@FooterEnd-->
+		<!--@LoopEnd(ValidationErrors)-->
+
+    <div class="buttons">
+      <a href="/Default.aspx?ID=<!--@Global:Page.ID-->" class="btn"><!--@Translate(ItemPublisher:Edit.Cancel, "Cancel")--></a>
+      <button type="submit" class="btn btn-primary"><!--@Translate(ItemPublisher:Edit.Save, "Save changes")--></button>
+    </div>
+		<!--@ItemPublisher:Edit.Form.End-->
+  </div>
+</div>
+
+<script>
+ $(document).observe('dom:loaded', function () {
+   Dynamicweb.Items.ItemPublishing.get_current().initialize();
+ });
+</script>
