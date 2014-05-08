@@ -41,7 +41,7 @@
   <ItemGroup>
     <Reference Include="Dynamicweb, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Dynamicweb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\dynamicweb.net\Application\bin\Dynamicweb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -102,6 +102,13 @@
     <Content Include="Designs\bootstrap\Extranet\Login.cshtml" />
     <Content Include="Designs\bootstrap\master\no-sidebar.cshtml" />
     <Content Include="Designs\bootstrap\master\partials\userinfo.cshtml" />
+    <Content Include="Designs\Dynamicweb\Frontpage.cshtml" />
+    <Content Include="Designs\Dynamicweb\Main.cshtml" />
+    <Content Include="Designs\Dynamicweb\Master\Main.cshtml" />
+    <Content Include="Designs\Dynamicweb\Master\Partials\_footer_editpage.cshtml" />
+    <Content Include="Designs\Dynamicweb\Paragraph\Default.cshtml" />
+    <Content Include="Designs\Dynamicweb\Paragraph\Paragraph.cshtml" />
+    <Content Include="Designs\Dynamicweb\Paragraph\Partials\_paragraph_edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,6 +117,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Designs\Dynamicweb\Navigation\navbar.xslt" />
+    <Content Include="Designs\Dynamicweb\Navigation\pills.xslt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
