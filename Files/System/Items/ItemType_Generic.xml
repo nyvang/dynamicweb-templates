@@ -7,6 +7,26 @@
           <editorConfuguration><Parameters><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Type" value="text" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Pattern" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Placeholder" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Size" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Min" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Max" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Step" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Autocomplete" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Required" value="False" /></Parameters></editorConfuguration>
         </editor>
       </field>
+      <field name="Content" systemName="Content" description="" type="System.String, mscorlib">
+        <editor type="Dynamicweb.Content.Items.Editors.RichTextEditor, Dynamicweb">
+          <editorConfuguration><Parameters><Parameter addin="Dynamicweb.Content.Items.Editors.RichTextEditor" name="SelectConfgurationId" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Image" systemName="Image" description="" type="System.String, mscorlib">
+        <editor type="Dynamicweb.Content.Items.Editors.FileEditor, Dynamicweb">
+          <editorConfuguration><Parameters><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Base directory" value="/Images" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Extensions" value="png, jpg" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Read more URL" systemName="ReadMoreURL" description="" type="System.String, mscorlib">
+        <editor type="Dynamicweb.Content.Items.Editors.LinkEditor, Dynamicweb">
+          <editorConfuguration><Parameters><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnablePageSelection" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnableParagraphSelection" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="SelectOnlyID" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnableFileSelection" value="False" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Read more text" systemName="ReadMoreText" description="" type="System.String, mscorlib">
+        <editor type="Dynamicweb.Content.Items.Editors.InputHTML5Editor, Dynamicweb">
+          <editorConfuguration><Parameters><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Type" value="text" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Pattern" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Placeholder" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Size" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Min" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Max" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Step" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Autocomplete" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.InputHTML5Editor" name="Required" value="False" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
     </fields>
     <rules>
       <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
@@ -17,6 +37,10 @@
         <group name="General" systemName="General" collapsibleState="None">
           <fields>
             <field systemName="Name" />
+            <field systemName="Content" />
+            <field systemName="Image" />
+            <field systemName="ReadMoreURL" />
+            <field systemName="ReadMoreText" />
           </fields>
         </group>
       </groups>
