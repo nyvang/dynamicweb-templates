@@ -41,6 +41,42 @@
         </div>
     </div>
     @ContentPlaceholder()
+
+    @{
+        var footerItems = GetLoop("Item.Area.FooterContent");
+        
+        
+    }
+    @if (footerItems.Count > 0)
+    {
+        var numberOfColumns = 4;
+        switch (footerItems.Count)
+        {
+            case 1: numberOfColumns = 12; break;
+            case 2: numberOfColumns = 6; break;
+            case 3: numberOfColumns = 4; break;
+            case 4: numberOfColumns = 3; break;
+            case 5: numberOfColumns = 2; break;
+            case 6: numberOfColumns = 2; break;
+            case 7: numberOfColumns = 2; break;
+                
+        }
+        <div class="container footer">
+            <div class="row">
+
+                @foreach (var item in GetLoop("Item.Area.FooterContent"))
+                {
+
+                    <div class="col-md-@numberOfColumns">
+                        <div class="footerName">@item.GetValue("Item.Area.FooterContent.Name")</div>
+                        <div class="footerContent">@item.GetValue("Item.Area.FooterContent.Content")</div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    }
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     @RenderSnippet("JavaScriptBottom")
