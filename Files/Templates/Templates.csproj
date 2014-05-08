@@ -109,6 +109,8 @@
     <Content Include="Designs\Dynamicweb\Paragraph\Default.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Paragraph.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Partials\_paragraph_edit.cshtml" />
+    <Content Include="Designs\Dynamicweb\Extranet\Login.cshtml" />
+    <Content Include="Designs\Dynamicweb\Paragraph\GenericRow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
