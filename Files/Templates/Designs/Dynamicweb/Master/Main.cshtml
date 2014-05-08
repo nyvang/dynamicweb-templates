@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamicweb</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    @if (!string.IsNullOrWhiteSpace(GetString("Item.Area.CustomCssURL")))
+    {
+
+        @("<" + "link")@: rel="stylesheet" href='@GetString("Item.Area.CustomCssURL")' @("/>")
+    }
     @RenderSnippet("StyleSheet")
     @RenderSnippet("JavaScript")
 </head>
@@ -44,8 +49,8 @@
 
     @{
         var footerItems = GetLoop("Item.Area.FooterContent");
-        
-        
+
+
     }
     @if (footerItems.Count > 0)
     {
@@ -59,7 +64,7 @@
             case 5: numberOfColumns = 2; break;
             case 6: numberOfColumns = 2; break;
             case 7: numberOfColumns = 2; break;
-                
+
         }
         <div class="container footer">
             <div class="row">
