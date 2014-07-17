@@ -115,6 +115,8 @@
     <Content Include="Designs\Dynamicweb\Extranet\Login.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\GenericRow.cshtml" />
     <Content Include="Designs\Dynamicweb\razor\functions.cshtml" />
+    <Content Include="Designs\Dynamicweb\ItemPublisher\List\List.cshtml" />
+    <Content Include="Designs\Dynamicweb\ItemPublisher\Details\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
