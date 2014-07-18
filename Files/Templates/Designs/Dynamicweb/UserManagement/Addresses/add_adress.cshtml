@@ -46,10 +46,11 @@
 		<th align="left"><!--@Translate(Default, "Default")-->: </th>
 		<td><input type="checkbox" id="Default" name="Default" /></td>
 	</tr>	
-</table>		
+	
           
-<br />
-
+<tr>
+    <td></td>
+    <td>
 @if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddresses.DetailUrl"))){
 	<a href="@GetValue("UserManagement:User.ManageAddresses.DetailUrl")"><button type="button" class="btn btn-default">Back to addresses</button></a>
 }
@@ -60,8 +61,9 @@
 @if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddresses.UpdateAddress"))){
     <input class="btn btn-default" type="submit" id="submit1" value="<!--@Translate(updateaddress, "Update address")-->" />
 }
-
-
+        </td>
+</tr>
+</table>	
 
 @GetValue("UserManagement:User.ManageAddresses.FormEnd")
 

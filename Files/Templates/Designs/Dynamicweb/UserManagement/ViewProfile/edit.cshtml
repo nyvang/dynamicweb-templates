@@ -30,13 +30,28 @@
             <td><input name="@GetValue("UserManagement:User.PhoneMobile.InputName")" type="text" id="@GetValue("UserManagement:User.PhoneMobile.InputName")" value="@GetValue("UserManagement:User.PhoneMobile")" class ="form-control"/></td>
 		</tr>
 	    
+        @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean"))){
 		<tr>
 			<th align="left"><!--@Translate(profilepicture, "Profile picture")-->: </th>
-            <td><input name="@GetValue("UserManagement:User.Image.UploaderName")" type="file" id="@GetValue("UserManagement:User.Image.UploaderName")" class ="btn btn-default"/></td>
-			
+            
+                
+			<td><img style="margin-bottom:2px" src ="@GetString("UserManagement:User.Image.Clean")" class ="thumbnail" data-src="holder.js/100%x180"/>
+            
+                <button type="button" class="btn btn-default" onclick="@GetString("UserManagement:User.Image.DeleteLink")"><!--@Translate(removepicture, "Remove profile picture")--></button>
+            </td>    
 		</tr>
-	</table>
-
+            
+        }
+        else{
+            <tr>
+                <td>    </td>
+                <td><input name="@GetValue("UserManagement:User.Image.UploaderName")" type="file" id="@GetValue("UserManagement:User.Image.UploaderName")" class ="btn btn-default" /></td>
+            </tr>
+        }
+        
+        <tr>
+	    <td></td>
+            <td>
 @if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
 	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
 }
@@ -47,8 +62,8 @@
 }
 
 	<input type="submit" id="submitter" value="<!--@Translate(updateuser, "Update user")-->" class ="btn btn-default">
-
-
+            </td></tr>
+</table>
 @GetValue("UserManagement:User.FormEnd")
 
 
