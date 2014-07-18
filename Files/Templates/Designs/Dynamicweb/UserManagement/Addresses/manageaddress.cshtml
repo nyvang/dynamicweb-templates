@@ -6,7 +6,7 @@
 <h2><!--@Translate(manageAddresses, "Manage Addresses")--></h2>
 <br />
 @GetValue("UserManagement:User.ManageAddresses.FormStart")
-<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table table-striped">
     <colgroup>
         <col width="100px" align="left" />
         <col width="100px" align="left" />
@@ -33,7 +33,8 @@
     </thead>
     <tbody>        		
 		@foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses")){
-		<tr>		    
+		<tr>	
+            
 		    <td>@i.GetValue("UserManagement:User.UserAddress.Description")&nbsp;</td>
             <td>@i.GetValue("UserManagement:User.UserAddress.Address")&nbsp;</td>
             <td>@i.GetValue("UserManagement:User.UserAddress.Address2")&nbsp;</td>
@@ -42,9 +43,9 @@
             <td>@i.GetValue("UserManagement:User.UserAddress.State")&nbsp;</td>
             <td>@i.GetValue("UserManagement:User.UserAddress.Country")&nbsp;</td>
             <td>
-                @if(Dynamicweb.Input.FormatBoolean(i.GetValue("UserManagement:User.UserAddress.Default"))){<text>
+                @if(!string.IsNullOrWhiteSpace(i.GetString("UserManagement:User.UserAddress.Default"))){    
                     <img src="/Admin/images/Check.gif" align="middle" style="vertical-align: middle;border:0px;">
-                </text>}                
+                }
             </td>		    
 			<td>                
                 <input type="image" onclick="makeDefaultAddress('@i.GetValue("UserManagement:User.UserAddress.ID")    ');" title="Set default" alt="Set default" src="/Admin/Images/Ribbon/Icons/Small/document_ok.png" style="vertical-align: middle;border:0px;float:left;" />
@@ -52,13 +53,18 @@
                 <input type="image" onclick="updateAddress('@i.GetValue("UserManagement:User.UserAddress.ID")    ');" title="Edit" alt="Edit" src="/Admin/Images/Ribbon/Icons/Small/EditDocument.png" style="vertical-align: middle;border:0px;float:left;" />                
             </td>
         </tr> 
+                
         }                                
     </tbody>
 </table>
 <br />
+@if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
+	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
+}      
+      
 <input type="submit" id="submitter" onclick="addAddress();" value="<!--@Translate(addaddress, "Add address")-->" class ="btn btn-default" />
 @GetValue("UserManagement:User.ManageAddresses.FormEnd")
 <br />
-@if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
-	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
-}
+
+    
+    
