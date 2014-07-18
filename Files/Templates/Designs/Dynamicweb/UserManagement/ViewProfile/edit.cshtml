@@ -16,6 +16,10 @@
 			<th align="left"><!--@Translate(Name, "Name")-->: </th>
 			<td><input name="@GetValue("UserManagement:User.Name.InputName")" type="text" id="@GetValue("UserManagement:User.Name.InputName")" value="@GetValue("UserManagement:User.Name")" class ="form-control"/></td>
 		</tr>
+        <tr>
+			<th align="left"><!--@Translate(UserName, "Username")-->: </th>
+			<td><input name="@GetValue("UserManagement:UserName.Name.InputName")" type="text" id="@GetValue("UserManagement:UserName.Name.InputName")" value="@GetValue("UserManagement:User.UserName")" class ="form-control"/></td>
+		</tr>
 		<tr>
 			<th align="left"><!--@Translate(Email, "Email")-->: </th>
             <td><input name="@GetValue("UserManagement:User.Email.InputName")" type="text" id="@GetValue("UserManagement:User.Email.InputName")" value="@GetValue("UserManagement:User.Email")" class ="form-control"/></td>
@@ -25,29 +29,7 @@
 			<th align="left"><!--@Translate(PhoneMobile, "Mobile phone")-->: </th>
             <td><input name="@GetValue("UserManagement:User.PhoneMobile.InputName")" type="text" id="@GetValue("UserManagement:User.PhoneMobile.InputName")" value="@GetValue("UserManagement:User.PhoneMobile")" class ="form-control"/></td>
 		</tr>
-	
-		<tr>
-			<th align="left"><!--@Translate(Address, "Address")-->: </th>
-            <td><input name="@GetValue("UserManagement:User.Address.InputName")" type="text" id="@GetValue("UserManagement:User.Address.InputName")" value="@GetValue("UserManagement:User.Address")" class ="form-control"/></td>
-			
-		</tr>
-		<tr>
-			<th align="left"><!--@Translate(Address2, "Address 2")-->: </th>
-            <td><input name="@GetValue("UserManagement:User.Address2.InputName")" type="text" id="@GetValue("UserManagement:User.Address2.InputName")" value="@GetValue("UserManagement:User.Address2")" class ="form-control"/></td>
-		</tr>
-		<tr>
-			<th align="left"><!--@Translate(Zip, "Zip")-->: </th>
-			<td><input name="@GetValue("UserManagement:User.Zip.InputName")" type="text" id="@GetValue("UserManagement:User.Zip.InputName")" value="@GetValue("UserManagement:User.Zip")"class ="form-control"/></td>
-		</tr>
-		<tr>
-			<th align="left"><!--@Translate(City, "City")-->: </th>
-			<td><input name="@GetValue("UserManagement:User.City.InputName")" type="text" id="@GetValue("UserManagement:User.City.InputName")" value="@GetValue("UserManagement:User.City")" class ="form-control"/></td>
-		</tr>
-		<tr>
-			<th align="left"><!--@Translate(Country, "Country")-->: </th>
-			<td><input name="@GetValue("UserManagement:User.Country.InputName")" type="text" id="@GetValue("UserManagement:User.Country.InputName")" value="@GetValue("UserManagement:User.Country")" class ="form-control"/></td>
-		</tr>
-		
+	    
 		<tr>
 			<th align="left"><!--@Translate(profilepicture, "Profile picture")-->: </th>
             <td><input name="@GetValue("UserManagement:User.Image.UploaderName")" type="file" id="@GetValue("UserManagement:User.Image.UploaderName")" class ="btn btn-default"/></td>
@@ -58,7 +40,15 @@
 @if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
 	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
 }
+
+@if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
+{
+	<a href="@GetValue("UserManagement:User.ManageAddressesUrl")"><button type="button" class="btn btn-default">Edit your adresses</button></a>
+}
+
 	<input type="submit" id="submitter" value="<!--@Translate(updateuser, "Update user")-->" class ="btn btn-default">
+
+
 @GetValue("UserManagement:User.FormEnd")
 
 
