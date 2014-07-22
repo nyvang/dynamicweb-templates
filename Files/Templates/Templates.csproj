@@ -117,6 +117,10 @@
     <Content Include="Designs\Dynamicweb\razor\functions.cshtml" />
     <Content Include="Designs\Dynamicweb\ItemPublisher\List\List.cshtml" />
     <Content Include="Designs\Dynamicweb\ItemPublisher\Details\Details.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\Addresses\add_adress.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\Addresses\manageaddress.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\edit.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\user_details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
