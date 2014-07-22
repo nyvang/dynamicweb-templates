@@ -1,19 +1,24 @@
 ﻿<h2>@GetValue("Ecom:Group.Name")</h2>
-<ul id="productlist" class="horizontal">
+
+
+<div class ="row">
+
     @foreach (LoopItem i in GetLoop("Products")){
-    <li class="listitem@i.GetValue("Products.LoopMod2")">
+    <div class ="col-md-4">
         <h3><a href="@i.GetValue("Ecom:Product.Link.Clean")">@i.GetValue("Ecom:Product.Name")</a></h3>
-        <a href="@i.GetValue("Ecom:Product.Link.Clean")">@i.GetValue("Ecom:Product.ImageSmall.Default")</a>
+        <a href="@i.GetValue("Ecom:Product.Link.Clean")"><img src ="@i.GetValue("Ecom:Product.ImageSmall.Default.Clean")" /></a>
         <span class="price">
             @i.GetValue("Ecom:Product.Price")
         </span>
         <a href="/default.aspx?id=@i.GetValue("Ecom:Product:Page.ID")&amp;productid=@i.GetValue("Ecom:Product.ID")&amp;cartcmd=add">Add to basket</a>
-        @if(Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Product.ShortDescription"))){<text>
-            <span class="shortdescription">@i.GetValue("Ecom:Product.ShortDescription")</span>
-        </text>}
-    </li>
+        @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Product.ShortDescription")))
+            {
+               <span class="shortdescription">@i.GetValue("Ecom:Product.ShortDescription")</span>
+            }
+        
+    </div>
     }
-</ul>
+   </div>
 <div id="productlistnavigation">
     <span id="productcount">
         @GetValue("Ecom:ProductList.PageProdCnt") products found
@@ -25,3 +30,5 @@
         <a id="prevpage" href="@GetValue("Ecom:ProductList.PrevPage.Clean")" @GetValue("Ecom:ProductList.PrevPage")>Previous</a> <a id="nextpage" href="@GetValue("Ecom:ProductList.NextPage.Clean")" @GetValue("Ecom:ProductList.NextPage")>Next</a><br />
     </span>
 </div>
+
+<!--@LoopStart(Products)--><!--@DwTemplateTags--> <!--@LoopEnd(Products)-->
