@@ -1,25 +1,47 @@
 @inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
-
 <div class="items">
     <div class="item-details">
-        @foreach (var field in GetLoop("ItemPublisher:Item.Fields"))
-        {
-            <div class="item-details-field">
-                <div class="item-details-field-name">@field.GetValue("ItemPublisher:Item.Field.Name")</div>
-                <div class="item-details-field-value">
-                    @if (field.Values.ContainsKey("ItemPublisher:Item.Field.Value"))
+        <table class="table table-striped">
+            <tr>
+                <th>Item field name</th>
+                <th>Item field value</th>
+                
+                
+                        <th></th>
+                
+            </tr>
+            @foreach (var field in GetLoop("ItemPublisher:Item.Fields"))
+            {
+           
+                <tr>
+                    <td>@field.GetValue("ItemPublisher:Item.Field.Name")</td>
+                    <td>
+                        @if (field.Values.ContainsKey("ItemPublisher:Item.Field.Value"))
+                        {
+                            @field.GetValue("ItemPublisher:Item.Field.Value") 
+                        
+                        }
+                        else
+                        {
+                            <span class="item-details-field-novalue">(<!--@Translate("ItemPublisher:Details.NotSpecified", "not specified")-->)</span>
+                        }
+                    </td>
+                    @if (field.GetBoolean("ItemPublisher:Item.CanEdit"))
                     {
-                        @field.GetValue("ItemPublisher:Item.Field.Value")
+                        <td><a href='@field.GetValue("ItemPublisher:Item.EditUrl")'><!--@Translate("ItemPublisher:Item.Edit", "Edit")--></a></td>
                     }
-                    else
-                    {
-                        <span class="item-details-field-novalue">(<!--@Translate("ItemPublisher:Details.NotSpecified", "not specified")-->)</span>
-                    }
-                </div>
-            </div>
-        }
+
+
+                </tr>
+            }
+        </table>
     </div>
     <div class="item-details-controls">
-        <a class="btn" href="#"><!--@Translate("ItemPublisher:Details.GoBack", "Go back")--></a>
+        <a class="btn" href="#">
+            <!--@Translate("ItemPublisher:Details.GoBack", "Go back")-->
+        </a>
+        <!--No tag to find page we came from (item list)-->
     </div>
 </div>
+
+
