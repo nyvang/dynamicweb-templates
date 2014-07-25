@@ -1,20 +1,37 @@
 ﻿<h2>@GetValue("Ecom:Group.Name")</h2>
 
 
+<div class="row">
+       @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Search.SearchBox")))
+    {
+        <div class="col-md-12">@GetValue("Ecom:Search.SearchBox")</div>
+    }
+    </div>
+
+
 <div class ="row">
 
+ 
+
+    
     @foreach (LoopItem i in GetLoop("Products")){
-    <div class ="col-md-4">
+         
+                <div class="col-md-4">
+         
+        
+    
         <h3><a href="@i.GetValue("Ecom:Product.Link.Clean")">@i.GetValue("Ecom:Product.Name")</a></h3>
-        <a href="@i.GetValue("Ecom:Product.Link.Clean")"><img src ="@i.GetValue("Ecom:Product.ImageSmall.Default.Clean")" /></a>
+        <a href="@i.GetValue("Ecom:Product.Link.Clean")"><img src ="@i.GetValue("Ecom:Product.ImageSmall.Default.Clean")" class="img-responsive img-thumbnail" /></a><br/>
         <span class="price">
             @i.GetValue("Ecom:Product.Price")
-        </span>
-        <a href="/default.aspx?id=@i.GetValue("Ecom:Product:Page.ID")&amp;productid=@i.GetValue("Ecom:Product.ID")&amp;cartcmd=add">Add to basket</a>
-        @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Product.ShortDescription")))
+        </span><br/>
+         @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Product.ShortDescription")))
             {
-               <span class="shortdescription">@i.GetValue("Ecom:Product.ShortDescription")</span>
+               <span class="shortdescription">@i.GetValue("Ecom:Product.ShortDescription")</span><br/>
             }
+
+        <a href="/default.aspx?id=@i.GetValue("Ecom:Product:Page.ID")&amp;productid=@i.GetValue("Ecom:Product.ID")&amp;cartcmd=add">Add to basket</a>
+       
         
     </div>
     }
@@ -31,4 +48,3 @@
     </span>
 </div>
 
-<!--@LoopStart(Products)--><!--@DwTemplateTags--> <!--@LoopEnd(Products)-->
