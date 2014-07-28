@@ -1,0 +1,19 @@
+﻿<div id="productdetails">
+    <h3>@GetValue("Ecom:Product.Name")</h3>
+    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:Product.ImageLarge.Default.Clean"))){<text>
+        <a href="@GetValue("Ecom:Product.ImageLarge.Default.Clean")" target="_blank">
+            @GetValue("Ecom:Product.ImageMedium.Default")
+        </a>
+    </text>}
+    @if(!Dynamicweb.Input.FormatBoolean(GetValue("Ecom:Product.ImageLarge.Default.Clean"))){<text>
+            @GetValue("Ecom:Product.ImageMedium.Default")
+    </text>}
+    <span class="price">
+        @GetValue("Ecom:Product.Price")
+    </span>
+    <span>
+        <a href="/default.aspx?id=@GetValue("Ecom:Product:Page.ID")&amp;productid=@GetValue("Ecom:Product.ID")&amp;cartcmd=add">Add to basket</a>
+    </span>
+    <span class="shortdescription">@GetValue("Ecom:Product.ShortDescription")</span>
+    <span class="longdescription">@GetValue("Ecom:Product.LongDescription")</span>
+</div>
