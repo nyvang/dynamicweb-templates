@@ -124,6 +124,8 @@
     <Content Include="Designs\Dynamicweb\ItemPublisher\Edit\Edit.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\ProductList\productList.cshtml" />
     <Content Include="Designs\Dynamicweb\Item.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\Search\searchForm.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\Product\product.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
