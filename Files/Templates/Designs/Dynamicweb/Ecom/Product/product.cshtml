@@ -23,16 +23,31 @@
         @if(GetInteger("Ecom:Product.VariantCount")==0){
 
         <span class="price">
+            @if (String.Equals(GetString("Ecom:Product.Discount.Price.VAT"),GetString("Ecom:Product.Price.Price")))
+            {
+            <text>Old price:</text>
+            <s>@GetValue("Ecom:Product.Price")</s>
+            <text>Sale price:</text>
+               <mark> @GetValue("Ecom:Product.Discount.Price.PriceWithVATFormatted")</mark>
+                
+            }
+            else{
+            <text>Price: </text>
             @GetValue("Ecom:Product.Price")
-            
+               
+            }
         </span>
 
-
-        <span>
-            <a href="/default.aspx?id=@GetValue("Ecom:Product:Page.ID")&amp;productid=@GetValue("Ecom:Product.ID")&amp;cartcmd=add" class="btn btn-default">Add to basket</a>
-        </span>
-            
+            <br />
+        
+            <form action ="default.aspx">
+                <input hidden type ="text" name ="ID" value ="@GetValue("Ecom:Product:Page.ID")" />
+                <input hidden type ="text" name ="productID" value ="@GetValue("Ecom:Product.ID")" />
+                <input hidden type ="text" name ="cartcmd" value ="add" />
+            </form>
+             
         }
+ 
         <span class="shortdescription"><small>@GetValue("Ecom:Product.ShortDescription")</small></span>
         <span class="longdescription">@GetValue("Ecom:Product.LongDescription")</span>
     
@@ -52,7 +67,19 @@
                 else{
                 <td><a href="@i.GetValue("Ecom:VariantCombination.Link.Clean")">@i.GetValue("Ecom:VariantCombination.VariantText")</a></td>
                     <td>@i.GetValue("Ecom:VariantCombination.Product.Price")</td>
-                <td><a href = "@i.GetValue("Ecom:VariantCombination.CartLink.Clean")">Add to basket</a></td>
+                <td>  <form method="post" role ="form">
+                            <input type ="hidden" name ="ID" value ="@GetValue("Ecom:Product:Page.ID")" />
+                            <input type ="hidden" name ="ProductID" value ="@GetValue("Ecom:Product.ID")" />
+                            <input type ="hidden" name ="VariantID" value ="@i.GetValue("Ecom:VariantCombination.VariantID")" />
+                          
+                            <input type ="hidden" name ="CartCmd" value ="add" />
+                            <button type="submit" class ="btn btn-default" >Add to basket</button>
+
+                    </form></td>
+                  
+                    
+                   
+                    
                 }
             </tr>
             

@@ -1,6 +1,6 @@
 ﻿<form name="ordersubmit" id="ordersubmit" method="post" role ="form">
 	<fieldset>
-		<h2><!--@Translate(shoppingbasket, "Shopping Basket")--></h2>
+		<h2><!--@Translate(cart, "Cart")--></h2>
 		@if(!(GetBoolean("Ecom:Order.IsEmpty"))){
 			<table id="orderdetails" class="table table-hover">
 				<tr>
@@ -16,10 +16,11 @@
 						<td>
 							<a href="@i.GetValue("Ecom:Order:OrderLine.ProductLink")">
 								@i.GetValue("Ecom:Order:OrderLine.ProductName.Short")
-                                @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Order:OrderLine.ProductVariantText")))
-								{
-                                    @i.GetValue("Ecom:Order:OrderLine.ProductVariantText");
-								}
+                                
+                                 @if (!string.IsNullOrWhiteSpace(i.GetString("Ecom:Order:OrderLine.ProductVariantText"))){
+
+                                    @i.GetValue("Ecom:Order:OrderLine.ProductVariantText")
+                                 }
 							</a>
 						</td>
 						<td>@i.GetValue("Ecom:Order:OrderLine.Quantity")</td>
