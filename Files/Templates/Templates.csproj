@@ -123,6 +123,7 @@
     <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\user_details.cshtml" />
     <Content Include="Designs\Dynamicweb\ItemPublisher\Edit\Edit.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\ProductList\productList.cshtml" />
+    <Content Include="Designs\Dynamicweb\Item.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
