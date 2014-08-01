@@ -5,6 +5,8 @@
   </PageItemLayouts>
   <ParagraphItemLayouts>
     <ItemLayout systemname="Generic" template="" />
+    <ItemLayout systemname="GenericRow" template="" />
+    <ItemLayout systemname="Module" template="" />
     <ItemLayout systemname="Paragraph" template="" />
   </ParagraphItemLayouts>
 </WebsiteItemLayouts>
