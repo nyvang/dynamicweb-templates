@@ -15,8 +15,22 @@
 @functions{
     public String findValue(String value)
         {
-            String[] realValue = ((value.Split(' '))[4].Split('='))[1].Split('/'); 
+        if(value == "<input type=\"text\" id=\"Description\" name=\"Description\" />" || 
+            value == "<input type=\"text\" id=\"Address\" name=\"Address\" />" ||
+            value == "<input type=\"text\" id=\"Address2\" name=\"Address2\" />" ||
+            value == "<input type=\"text\" id=\"Zip\" name=\"Zip\" />" ||
+            value == "<input type=\"text\" id=\"State\" name=\"State\" />" ||
+            value == "<input type=\"text\" id=\"City\" name=\"City\" />" ||
+            value == "<input type=\"text\" id=\"Country\" name=\"Country\" />" ||
+            value == "<input type=\"checkbox\" id=\"Default\" name=\"Default\" />")
+        {
+            return "&nbsp;";
+        }
+        else{
+            String[] realValue = ((value.Split(' '))[4].Split('='))[1].Split('/');
             return realValue[0];
+            
+        }
     }
 }
 
