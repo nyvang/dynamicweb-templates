@@ -29,6 +29,21 @@
             <div class="collapse navbar-collapse">
                 <ul class="dwnavigation nav navbar-nav" id="navbar" data-settings="template:navbar.xslt;endlevel:1;expandmode:all"></ul>
                 <div class="pull-right">
+
+                    <!-- Single button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Language <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            @foreach (var language in GetLoop("WebsiteLanguages"))
+                            {
+                            <li><a href='Default.aspx?ID=@language.GetValue("FirstPageID")'>@language.GetValue("Name")</a>
+                            </li>
+                            }
+                       </ul>
+                    </div>
+
                     @if (Pageview.User.UserID > 0)
                     {
                         <p class="navbar-text">Signed in as <a href="#" class="navbar-link">@Pageview.User.UserName</a></p>

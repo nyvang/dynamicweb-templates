@@ -127,6 +127,7 @@
     <Content Include="Designs\Dynamicweb\Ecom\Search\searchForm.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\Product\product.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\showcart.cshtml" />
+    <Content Include="Designs\Dynamicweb\ItemCreator\Create\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,6 +143,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
