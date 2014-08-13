@@ -6,10 +6,11 @@
         text-align: center;
     }
 
-        footer > .row > div:first-child {
-            text-align: left;
-        }
 
         footer > .row > div:last-child {
             text-align: right;
+        }
+
+        footer > .row > div:first-child {
+            text-align: left;
         }
