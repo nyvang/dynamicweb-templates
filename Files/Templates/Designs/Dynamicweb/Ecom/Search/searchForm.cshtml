@@ -1,12 +1,18 @@
-﻿<form name="EcomSearch" method="get" class ="form-inline" role ="form">
-    <div class="form-group">
-<input type="hidden" name="ID" value="@GetValue("Ecom:Search:Page.ID")">
-        </div>
-    <div class="form-group">
-<input type="text" name="eComQuery" value="@GetValue("Ecom:Search.Query")" class ="form-control" placeholder="Search here"> 
-        </div>
-    <div class="form-group">
-<input type="submit" value="Search" class ="btn btn-default">
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-        </div>
+<form name="EcomSearch" method="get" class="form" role="form">
+    <div style="display: none">
+        <input name="Id" value="@Pageview.Page.ID" />
+    </div>
+    <div class="form-group">
+        <input type="search" name="eComQuery" value='@GetValue("Ecom:Search.Query")' class="form-control" placeholder='@Translate("Search", "Search")'/>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">@Translate("Search", "Search")</button>
+    </div>
+
+    @foreach (var filter in GetLoop("Ecom:Search.Filters"))
+    {
+        @filter.GetValue("Ecom:Search.Filter.Output")
+    }
 </form>
