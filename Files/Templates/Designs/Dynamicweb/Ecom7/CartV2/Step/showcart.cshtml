@@ -39,12 +39,12 @@
 
         
 				<tr>
-					<td><!--@Translate(paymentfee, "Paymentfee")--> (@GetValue("Ecom:Order.PaymentMethod"))</td>
+					<td><!--@Translate(paymentfee, "Paymentfee")--> @GetValue("Ecom:Order.PaymentMethod")</td>
                     <td></td>
 					<td title="@GetValue("Ecom:Order.PaymentFee.PriceFormatted")">@GetValue("Ecom:Order.PaymentFee.PriceFormatted")</td>
 				</tr>
 				<tr>
-					<td><!--@Translate(deliveryfee, "Deliveryfee")--> (@GetValue("Ecom:Order.ShippingMethod"))</td>
+					<td><!--@Translate(deliveryfee, "Deliveryfee")--> @GetValue("Ecom:Order.ShippingMethod")</td>
                     <td></td>
 					<td title="@GetValue("Ecom:Order.ShippingFee.PriceFormatted")">@GetValue("Ecom:Order.ShippingFee.PriceFormatted")</td>
 				</tr>
