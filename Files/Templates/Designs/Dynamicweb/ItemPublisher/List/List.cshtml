@@ -1,7 +1,11 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
 <div class="items">
-    @if (GetBoolean("ItemPublisher:Items.Any"))
+    @if (!GetBoolean("ItemPublisher:Items.Any"))
+    {
+        <div class="alert alert-info">@Translate("No_items_found", "No items found")</div>
+    }
+    else
     {
         <div class="table-responsive">
             <table class="table table-hover ">
