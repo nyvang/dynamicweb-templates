@@ -27,11 +27,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href='/Default.aspx?ID=@Pageview.Area.Values["areafirstpage"]'>@Pageview.Area.Values["areaname"]</a>
+                <a class="navbar-brand" href='Default.aspx?ID=@Pageview.Area.Values["areafirstpage"]'>@Pageview.Area.Values["areaname"]</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="dwnavigation nav navbar-nav" id="navbar" data-settings="template:navbar.xslt;endlevel:1;expandmode:all"></ul>
                 <div class="pull-right">
+                   
+
+                    @if (Pageview.User.UserID > 0)
+                    {
+                        <p class="navbar-text">
+                            @Translate("Signed_in_as", "Signed in as")
+                            @if (Pageview.Area.Item != null && Pageview.Area.Item.ContainsKey("UserManagementPageId"))
+                            {
+                                <a href='Default.aspx?Id=@Pageview.Area.Item["UserManagementPageId"]' class="navbar-link username">@Pageview.User.UserName</a>
+                            }
+                            else
+                            {
+                                <span class="username">@Pageview.User.UserName</span>
+                            }
+                        </p>
+                        <a href='/Admin/Public/ExtranetLogoff.aspx?redirect=@System.Web.HttpUtility.UrlEncode("/Default.aspx?Id="+Pageview.Page.ID)' class="btn btn-default navbar-btn">@Translate("Sign_out", "Sign out")</a>
+                    }
+                    else
+                    {
+                        if (Pageview.Area.Item != null && Pageview.Area.Item.ContainsKey("SignInPageId"))
+                        {
+                            <a href='Default.aspx?Id=@Pageview.Area.Item["SignInPageId"]&amp;redirect=@System.Web.HttpUtility.UrlEncode("/Default.aspx?Id="+Pageview.Page.ID)' class="btn btn-default navbar-btn">@Translate("Sign in", "Sign in")</a>
+                        }
+                    }
+
                     @{
                         var languages = GetLoop("WebsiteLanguages");
 
@@ -39,7 +64,7 @@
                         {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Language <span class="caret"></span>
+                                    @Translate("Language", "Language") <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     @foreach (var language in GetLoop("WebsiteLanguages"))
@@ -50,19 +75,6 @@
                                     }
                                 </ul>
                             </div>
-                        }
-                    }
-
-                    @if (Pageview.User.UserID > 0)
-                    {
-                        <p class="navbar-text">Signed in as <a href="#" class="navbar-link">@Pageview.User.UserName</a></p>
-                        <a href='/Admin/Public/ExtranetLogoff.aspx?redirect=@System.Web.HttpUtility.UrlEncode("/Default.aspx?Id="+Pageview.Page.ID)' class="btn btn-default navbar-btn">Sign out</a>
-                    }
-                    else
-                    {
-                        if (Pageview.Area.Item != null && Pageview.Area.Item.ContainsKey("SignInPageId"))
-                        {
-                            <a href='/Default.aspx?Id=@Pageview.Area.Item["SignInPageId"]&amp;redirect=@System.Web.HttpUtility.UrlEncode("/Default.aspx?Id="+Pageview.Page.ID)' class="btn btn-default navbar-btn">Sign in</a>
                         }
                     }
                 </div>
