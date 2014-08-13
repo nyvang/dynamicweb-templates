@@ -18,7 +18,7 @@
         {
             @i.GetValue("HeaderStart")
             <div class="validation-error">
-                <!--@Translate(ItemPublisher:Edit.SaveError, "Item not saved!")-->
+                @Translate("Error_saving_item", "Error saving item")
                 <ul>
                     @i.GetValue("HeaderEnd")
                     <li>@i.GetValue("ItemCreator:Edit.Validation.FieldName"): @i.GetValue("ItemCreator:Edit.Validation.Error")</li>

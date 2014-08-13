@@ -53,17 +53,17 @@
 
 
             @foreach (LoopItem i in GetLoop("ValidationErrors"))
-            {		
+            {
                 @i.GetValue("HeaderStart")
                 <div class="validation-error">
-                    <!--@Translate(ItemPublisher: Edit.SaveError, "Item not saved!")-->
+                    @Translate("Error_saving_item", "Error saving item")
                     <ul>
                         @i.GetValue("HeaderEnd")
                         <li>@i.GetValue("ItemPublisher:Edit.Validation.FieldName"): @i.GetValue("ItemPublisher:Edit.Validation.Error")</li>
                         @i.GetValue("FooterStart")
                     </ul>
-                </div>				
-                @i.GetValue("FooterEnd")		
+                </div>
+                @i.GetValue("FooterEnd")
             }
             <br />
 

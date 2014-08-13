@@ -3,28 +3,28 @@
 <h2>Detail for '@GetValue("UserManagement:User.Name")'</h2>
 <table>
 	<tr>
-		<th align="left"><!--@Translate(Name, "Name")-->: </th>
+		<th align="left">@Translate("Name", "Name"): </th>
 		<td>@GetValue("UserManagement:User.Name")</td>
 	</tr>
     	<tr>
-		<th align="left"><!--@Translate(Username, "Username")-->: </th>
+		<th align="left">@Translate("Username", "Username"): </th>
 		<td>@GetValue("UserManagement:User.UserName")</td>
 	</tr>
 	<tr>
 	<tr>
-		<th align="left"><!--@Translate(Email, "Email")-->: </th>
+		<th align="left">@Translate("Email", "Email"): </th>
 		<td>@GetValue("UserManagement:User.Email")</td>
 	</tr>
 	<tr>
-		<th align="left"><!--@Translate(PhoneMobile, "Mobile phone")-->: </th>
+		<th align="left">@Translate("Mobile phone", "Mobile phone"): </th>
 		<td>@GetValue("UserManagement:User.PhoneMobile")</td>
 	</tr>
-	
-	
-	
+
+
+
 	@if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean"))){
 		<tr>
-			<th align="left"><!--@Translate(profilepicture, "Profile picture")-->: </th>
+			<th align="left">@Translate("Profile_picture", "Profile picture"): </th>
 			<td><img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" border="0" /></td>
 		</tr>
 	}
@@ -44,6 +44,3 @@
 {
 	<a href="@GetValue("UserManagement:User.ManageAddressesUrl")"><button type="button" class="btn btn-default">Edit your adresses</button></a>
 }
-
-
-

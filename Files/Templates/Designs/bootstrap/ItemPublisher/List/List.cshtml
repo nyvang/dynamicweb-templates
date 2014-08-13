@@ -16,35 +16,36 @@
                         @if (GetBoolean("ItemPublisher:Items.CanEdit"))
                         {
                             <th><!--@Translate(ItemPublisher:Item.Edit, "Edit")--></th>
-                            }
+                        }
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in GetLoop("ItemPublisher:Items.List")) {
+                    @foreach (var item in GetLoop("ItemPublisher:Items.List"))
+                    {
                     <tr onclick='location.href = "@item.GetValue("ItemPublisher:Item.Url")";'>
                         @foreach (var field in item.GetLoop("ItemPublisher:Item.Fields"))
-                        {
+                            {
                             <td>
                                 @field.GetValue("ItemPublisher:Item.Field.Value")
                             </td>
-                        }
+                            }
                         <td>
                             <a href='@item.GetValue("ItemPublisher:Item.DetailsUrl")'><!--@Translate(ItemPublisher:Item.DetailsUrl, "View")--></a>
                         </td>
                         @if (GetBoolean("ItemPublisher:Items.CanEdit"))
-                        {
+                            {
                             <td>
                                 <a href='@item.GetValue("ItemPublisher:Item.EditUrl")'><!--@Translate(ItemPublisher:Item.Edit, "Edit")--></a>
                             </td>
                             }
                         </tr>
-                        }
+                    }
                     </tbody>
                 </table>
             </div>
 
-            if (GetInteger("ItemPublisher:Items.Paging.TotalPages") > 1)
-            {
+        if (GetInteger("ItemPublisher:Items.Paging.TotalPages") > 1)
+        {
             var hasPrevPage = GetInteger("ItemPublisher:Items.Paging.CurrentPage") > 1;
             var hasNextPage = GetInteger("ItemPublisher:Items.Paging.CurrentPage") < GetInteger("ItemPublisher:Items.Paging.TotalPages");
 
@@ -53,9 +54,11 @@
                     @if (hasPrevPage)
                     {
                         <a href='@System.Web.HttpUtility.HtmlEncode(GetValue("ItemPublisher:Items.Paging.PrevPage"))'><!--@Translate(PreviousPage, "&laquo;")--></a>
-                        } else {
+                    }
+                    else
+                    {
                         <span><!--@Translate(PreviousPage, "&laquo;")--></span>
-                         }
+                    }
                 </li>
 
                 @foreach (var p in GetLoop("ItemPublisher:Items.Paging.Pages"))
@@ -77,12 +80,14 @@
                     @if (hasNextPage)
                     {
                         <a href='@System.Web.HttpUtility.HtmlEncode(GetValue("ItemPublisher:Items.Paging.NextPage"))'><!--@Translate(NextPage, "&raquo;")--></a>
-                        } else {
+                    }
+                    else
+                    {
                         <span><!--@Translate(NextPage, "&raquo;")--></span>
                         }
                 </li>
             </ul>
-            }
+        }
 
-            }
+    }
         </div>
