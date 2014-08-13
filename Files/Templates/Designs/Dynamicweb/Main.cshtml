@@ -3,15 +3,27 @@
 @Title("Main page template")
 @MasterPageFile("Master/Main.cshtml")
 
+@helper DisplayContent()
+{
+    @* <h1>@GetValue("Title")</h1> *@
+    <div class="dwcontent" id="content" title="Content"></div>
+}
+
 <div class="container">
     <div class="row">
-        <div class="col-md-9 col-md-push-3">
-            <h1>@GetValue("Title")</h1>
-            <div class="dwcontent" id="content" title="Content"></div>
-        </div>
-        <div class="col-md-3 col-md-pull-9">
-          <ul class="dwnavigation nav-stacked" id="navpills" data-settings="template:pills.xslt;startlevel:2;endlevel:2"></ul>
-        </div>
+        @if (string.IsNullOrEmpty(GetString("DwNavigation(navpills)")))
+        {
+            @DisplayContent()
+        }
+        else
+        {
+            <div class="col-md-9 col-md-push-3">
+                @DisplayContent()
+            </div>
+            <div class="col-md-3 col-md-pull-9">
+                <ul class="dwnavigation nav-stacked" id="navpills" data-settings="template:pills.xslt;startlevel:2;endlevel:2"></ul>
+            </div>
+        }
     </div>
 </div>
 
