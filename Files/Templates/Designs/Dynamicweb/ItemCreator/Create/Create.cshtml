@@ -1,34 +1,67 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
+@GetValue("ItemCreator:Edit.Form.Begin")
+@if (GetString("ItemCreator:Edit.Status") == "ITEM_CREATED")
+{
+    <div class="alert alert-success">
+        @Translate("Item_created", "Item created")
+    </div>
+    <div>
+        <a class="btn btn-link" href="Default.aspx?Id=@Pageview.Page.ID">@Translate("Create_another_item", "Create another item")</a>
+    </div>
 
-<div class="items">
-    <div class="item-edit-form">
-        @GetValue("ItemCreator:Edit.Form.Begin")
-        <p> @GetValue("ItemCreator:Edit.Status") </p> <!--new seesion-->
-
-        <div class="item-edit-fields-outer">
-            @GetValue("ItemCreator:Edit.Form")
-        </div>
-
-        <div class="item-edit-submission">
-            <input type="button" value='Cancel' class="btn btn-default"  />
-            <input type="submit" value='Save' class="btn btn-default" />
-        </div>
-        @foreach (LoopItem i in GetLoop("ValidationErrors"))
+    @* TODO Show the created item *@
+    foreach (var group in GetLoop("ItemCreator:Edit.Item.Groups"))
+    {
+        foreach (var field in group.GetLoop("ItemCreator:Edit.Item.Group.Fields"))
         {
-            @i.GetValue("HeaderStart")
-            <div class="validation-error">
-                @Translate("Error_saving_item", "Error saving item")
+        }
+    }
+}
+else if (GetString("ItemCreator:Edit.Status") != "NEW_SESSION")
+{
+    var errors = GetLoop("ValidationErrors");
+    if (errors.Count > 0)
+    {
+        <div id="errormessages" class="alert alert-danger">
+            @* TODO Show error messages
                 <ul>
-                    @i.GetValue("HeaderEnd")
-                    <li>@i.GetValue("ItemCreator:Edit.Validation.FieldName"): @i.GetValue("ItemCreator:Edit.Validation.Error")</li>
-                    @i.GetValue("FooterStart")
+                    @foreach (var error in errors)
+                    {
+                        @error.TemplateTags()
+                    }
                 </ul>
-            </div>
-            @i.GetValue("FooterEnd")
+            *@
+            @Translate("Please_check_you_input", "Please check you input")
+        </div>
+    }
+}
+
+@if (GetString("ItemCreator:Edit.Status") != "ITEM_CREATED")
+{
+    <div class="form-horizontal" role="form">
+        @foreach (var group in GetLoop("ItemCreator:Edit.Item.Groups"))
+        {
+            <fieldset>
+                <legend>@group.GetValue("ItemCreator:Edit.Item.Group.Name")</legend>
+
+                @foreach (var field in group.GetLoop("ItemCreator:Edit.Item.Group.Fields"))
+                {
+                    <div class="form-group">
+                        <label for='@field.GetValue("ItemCreator:Edit.Item.Field.SystemName")' class="col-sm-2 control-label">@field.GetValue("ItemCreator:Edit.Item.Field.Name")</label>
+                        <div class="col-sm-10">
+                            <input id='@field.GetValue("ItemCreator:Edit.Item.Field.SystemName")' name='@field.GetValue("ItemCreator:Edit.Item.Field.SystemName")' type="text" value='@field.GetValue("ItemCreator:Edit.Item.Field.Value")' class="form-control" />
+                        </div>
+                    </div>
+                }
+            </fieldset>
         }
 
-        <div class="items-clear"></div>
-        @GetValue("ItemCreator:Edit.Form.End")
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">@Translate("Create", "Create")</button>
+            </div>
+        </div>
     </div>
-</div>
+}
+@GetValue("ItemCreator:Edit.Form.End")
