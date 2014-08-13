@@ -13,7 +13,9 @@
     <div class="row">
         @if (string.IsNullOrEmpty(GetString("DwNavigation(navpills)")))
         {
-            @DisplayContent()
+            <div class="col-md-12">
+                @DisplayContent()
+            </div>
         }
         else
         {
