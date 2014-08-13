@@ -1,69 +1,83 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-<div class ="header"><h2>Edit user '@GetValue("UserManagement:User.Name")'</h2></div>
-@foreach (LoopItem i in GetLoop("FormValidationErrors")){
-	@i.GetValue("HeaderStart")
-		<div id="errormessages">
-			<ul>
-	@i.GetValue("HeaderEnd")
-				<li>Error in the input field "@i.GetValue("UserManagement:User.FormValidationError.FieldNiceName")": <a href="javascript:document.getElementById('@i.GetValue("UserManagement:User.FormValidationError.FieldName")').focus();">@i.GetValue("UserManagement:User.FormValidationError.Message")</a></li>
-	@i.GetValue("FooterStart")
-			</ul>
-		</div>
-	@i.GetValue("FooterEnd")
+@{
+    var errors = GetLoop("FormValidationErrors");
+    if (errors.Count > 0)
+    {
+        <div id="errormessages" class="alert alert-danger">
+            <ul>
+                @foreach (var error in errors)
+                {
+                    <li>Error in the input field "@error.GetValue("UserManagement:User.FormValidationError.FieldNiceName")": <a href="javascript:document.getElementById('@error.GetValue("UserManagement:User.FormValidationError.FieldName")').focus();">@error.GetValue("UserManagement:User.FormValidationError.Message")</a></li>
+                }
+            </ul>
+        </div>
+    }
 }
+
 @GetValue("UserManagement:User.FormStart")
-	<table>
-		<tr>
-			<th align="left">@Translate("Name", "Name"): </th>
-			<td><input name="@GetValue("UserManagement:User.Name.InputName")" type="text" id="@GetValue("UserManagement:User.Name.InputName")" value="@GetValue("UserManagement:User.Name")" class ="form-control"/></td>
-		</tr>
-        <tr>
-			<th align="left">@Translate("Username", "Username"): </th>
-			<td><input name="@GetValue("UserManagement:UserName.Name.InputName")" type="text" id="@GetValue("UserManagement:UserName.Name.InputName")" value="@GetValue("UserManagement:User.UserName")" class ="form-control"/></td>
-		</tr>
-		<tr>
-			<th align="left">@Translate("Email", "Email"): </th>
-            <td><input name="@GetValue("UserManagement:User.Email.InputName")" type="text" id="@GetValue("UserManagement:User.Email.InputName")" value="@GetValue("UserManagement:User.Email")" class ="form-control"/></td>
-		</tr>
+<div class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.Name.InputName")' class="col-sm-2 control-label">@Translate("Name", "Name")</label>
+        <div class="col-sm-10">
+            <input name="@GetValue("UserManagement:User.Name.InputName")" type="text" id="@GetValue("UserManagement:User.Name.InputName")" value="@GetValue("UserManagement:User.Name")" class="form-control" />
+        </div>
+    </div>
 
-		<tr>
-			<th align="left">@Translate("Mobile_phone", "Mobile phone"): </th>
-            <td><input name="@GetValue("UserManagement:User.PhoneMobile.InputName")" type="text" id="@GetValue("UserManagement:User.PhoneMobile.InputName")" value="@GetValue("UserManagement:User.PhoneMobile")" class ="form-control"/></td>
-		</tr>
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.UserName.InputName")' class="col-sm-2 control-label">@Translate("Username", "Username")</label>
+        <div class="col-sm-10">
+            <input name="@GetValue("UserManagement:UserName.Name.InputName")" type="text" id="@GetValue("UserManagement:UserName.Name.InputName")" value="@GetValue("UserManagement:User.UserName")" class="form-control" />
+        </div>
+    </div>
 
-        @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean"))){
-		<tr>
-			<th align="left">@Translate("Profile_picture", "Profile picture"): </th>
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.Email.InputName")' class="col-sm-2 control-label">@Translate("Email", "Email")</label>
+        <div class="col-sm-10">
+            <input name="@GetValue("UserManagement:User.Email.InputName")" type="email" id="@GetValue("UserManagement:User.Email.InputName")" value="@GetValue("UserManagement:User.Email")" class="form-control" />
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.PhoneMobile.InputName")' class="col-sm-2 control-label">@Translate("Mobile_phone", "Mobile phone")</label>
+        <div class="col-sm-10">
+            <input name="@GetValue("UserManagement:User.PhoneMobile.InputName")" type="tel" id="@GetValue("UserManagement:User.PhoneMobile.InputName")" value="@GetValue("UserManagement:User.PhoneMobile")" class="form-control" />
+        </div>
+    </div>
 
-			<td><img style="margin-bottom:2px" src ="@GetString("UserManagement:User.Image.Clean")" class ="thumbnail" data-src="holder.js/100%x180"/>
-
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Profile_picture", "Profile picture")</label>
+        <div class="col-sm-10">
+            @if (string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean")))
+            {
+                <input name="@GetValue("UserManagement:User.Image.UploaderName")" type="file" id="@GetValue("UserManagement:User.Image.UploaderName")" class="btn btn-default" />
+            }
+            else
+            {
+                <img style="margin-bottom:2px" src="@GetString("UserManagement:User.Image.Clean")" class="thumbnail" />
                 <button type="button" class="btn btn-default" onclick="@GetString("UserManagement:User.Image.DeleteLink")">@Translate("Remove_profile_picture", "Remove profile picture")</button>
-            </td>
-		</tr>
+            }
+        </div>
+    </div>
 
-        }
-        else{
-            <tr>
-                <td>    </td>
-                <td><input name="@GetValue("UserManagement:User.Image.UploaderName")" type="file" id="@GetValue("UserManagement:User.Image.UploaderName")" class ="btn btn-default" /></td>
-            </tr>
-        }
+    @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
+    {
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="@GetValue("UserManagement:User.ManageAddressesUrl")" class="btn btn-default">@Translate("Edit_addresses", "Edit addresses")</a>
+            </div>
+        </div>
+    }
 
-        <tr>
-	    <td></td>
-            <td>
-@if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
-	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
-}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl")))
+            {
+                <a href="@GetValue("UserManagement:User.DetailUrl")" class="btn btn-link">@Translate("Cancel", "Cancel")</a>
+            }
 
-@if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
-{
-	<a href="@GetValue("UserManagement:User.ManageAddressesUrl")"><button type="button" class="btn btn-default">Edit your adresses</button></a>
-}
-
-	<input type="submit" id="submitter" value="@Translate("Update_user", "Update user")" class ="btn btn-default">
-            </td></tr>
-</table>
+            <button type="submit" class="btn btn-primary">@Translate("Update_profile", "Update profile")</button>
+        </div>
+    </div>
+</div>
 @GetValue("UserManagement:User.FormEnd")

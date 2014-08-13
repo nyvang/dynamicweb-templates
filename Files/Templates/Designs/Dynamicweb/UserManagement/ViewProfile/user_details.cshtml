@@ -1,46 +1,67 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-<h2>Detail for '@GetValue("UserManagement:User.Name")'</h2>
-<table>
-	<tr>
-		<th align="left">@Translate("Name", "Name"): </th>
-		<td>@GetValue("UserManagement:User.Name")</td>
-	</tr>
-    	<tr>
-		<th align="left">@Translate("Username", "Username"): </th>
-		<td>@GetValue("UserManagement:User.UserName")</td>
-	</tr>
-	<tr>
-	<tr>
-		<th align="left">@Translate("Email", "Email"): </th>
-		<td>@GetValue("UserManagement:User.Email")</td>
-	</tr>
-	<tr>
-		<th align="left">@Translate("Mobile_phone", "Mobile phone"): </th>
-		<td>@GetValue("UserManagement:User.PhoneMobile")</td>
-	</tr>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Name", "Name")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.Name")</span>
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Username", "Username")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.UserName")</span>
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Email", "Email")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.Email")</span>
+        </div>
+    </div>
 
-	@if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean"))){
-		<tr>
-			<th align="left">@Translate("Profile_picture", "Profile picture"): </th>
-			<td><img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" border="0" /></td>
-		</tr>
-	}
-	@foreach (LoopItem i in GetLoop("UserManagement:User.CustomFields")){
-		<tr>
-			<th align="left">@i.GetValue("CustomField.Name"): </th>
-			<td>@i.GetValue("CustomField.Value")</td>
-		</tr>
-	}
-</table>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Mobile_phone", "Mobile phone")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.PhoneMobile")</span>
+        </div>
+    </div>
 
-@if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
-	<a href="@GetValue("UserManagement:User.EditUrl")"><button type="button" class="btn btn-default">Edit your profile</button></a>
-}
+    @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean")))
+    {
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@Translate("Profile_picture", "Profile picture")</label>
+            <div class="col-sm-10">
+                <span class="form-control">
+                    <img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" />
+                </span>
+            </div>
+        </div>
+    }
 
-@if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
-{
-	<a href="@GetValue("UserManagement:User.ManageAddressesUrl")"><button type="button" class="btn btn-default">Edit your adresses</button></a>
-}
+    @foreach (var field in GetLoop("UserManagement:User.CustomFields"))
+    {
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@field.GetValue("CustomField.Name")</label>
+            <div class="col-sm-10">
+                <span class="form-control">@field.GetValue("CustomField.Value")</span>
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.EditUrl")))
+            {
+                <a href="@GetValue("UserManagement:User.EditUrl")" class="btn btn-default">@Translate("Edit_profile", "Edit profile")</a>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
+            {
+                <a href="@GetValue("UserManagement:User.ManageAddressesUrl")" class="btn btn-default">@Translate("Edit_addresses", "Edit addresses")</a>
+            }
+        </div>
+    </div>
+</div>

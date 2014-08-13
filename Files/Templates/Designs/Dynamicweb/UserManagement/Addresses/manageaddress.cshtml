@@ -6,64 +6,54 @@
 @GetValue("UserManagement:User.ManageAddresses.UpdateAddress.Javascript")
 
 <h2>@Translate("Manage_addresses", "Manage Addresses")</h2>
-<br />
+
 @GetValue("UserManagement:User.ManageAddresses.FormStart")
-<table cellpadding="0" cellspacing="0" border="0" width="100%" class="table table-striped">
-    <colgroup>
-        <col width="100px" align="left" />
-        <col width="100px" align="left" />
-        <col width="100px" align="left" />
-        <col width="100px" align="left"/>
-        <col width="100px" align="left"/>
-        <col width="70px" align="left" />
-        <col width="100px" align="center" />
-        <col width="70px" align="left"/>
-        <col width="140px" align="left"/>
-    </colgroup>
+<table class="table">
     <thead>
         <tr>
-            <td><b>Description</b></td>
-            <td><b>Address</b></td>
-            <td><b>Address2</b></td>
-            <td><b>Zip code</b></td>
-            <td><b>City</b></td>
-            <td><b>State</b></td>
-            <td><b>Country</b></td>
-            <td><b>Default</b></td>
-            <td></td>
+            <th>@Translate("Description", "Description")</th>
+            <th>@Translate("Address", "Address")</th>
+            <th>@Translate("Address2", "Address2")</th>
+            <th>@Translate("Zip_code", "Zip code")</th>
+            <th>@Translate("City", "City")</th>
+            <th>@Translate("State", "State")</th>
+            <th>@Translate("Country", "Country")</th>
+            <th>@Translate("Default", "Default")</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-		@foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses")){
-		<tr>
-
-		    <td>@i.GetValue("UserManagement:User.UserAddress.Description")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.Address")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.Address2")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.Zip")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.City")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.State")&nbsp;</td>
-            <td>@i.GetValue("UserManagement:User.UserAddress.Country")&nbsp;</td>
-            <td>
-                @if(!string.IsNullOrWhiteSpace(i.GetString("UserManagement:User.UserAddress.Default"))){
-                    <img src="/Admin/images/Check.gif" align="middle" style="vertical-align: middle;border:0px;">
-                }
-            </td>
-			<td>
-                <input type="image" onclick="makeDefaultAddress('@i.GetValue("UserManagement:User.UserAddress.ID")    ');" title="Set default" alt="Set default" src="/Admin/Images/Ribbon/Icons/Small/document_ok.png" style="vertical-align: middle;border:0px;float:left;" />
-                <input type="image" onclick="deleteAddress('@i.GetValue("UserManagement:User.UserAddress.ID")    ');" title="Delete" alt="Delete" src="/Admin/images/Ribbon/Icons/Small/DeleteDocument.png" style="vertical-align: middle;border:0px;float:left;" />
-                <input type="image" onclick="updateAddress('@i.GetValue("UserManagement:User.UserAddress.ID")    ');" title="Edit" alt="Edit" src="/Admin/Images/Ribbon/Icons/Small/EditDocument.png" style="vertical-align: middle;border:0px;float:left;" />
-            </td>
-        </tr>
-
+        @foreach (var address in GetLoop("UserManagement:User.UserAddresses"))
+        {
+            <tr>
+                <td>@address.GetValue("UserManagement:User.UserAddress.Description")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.Address")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.Address2")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.Zip")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.City")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.State")&nbsp;</td>
+                <td>@address.GetValue("UserManagement:User.UserAddress.Country")&nbsp;</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(address.GetString("UserManagement:User.UserAddress.Default")))
+                    {
+                        <span class="glyphicon glyphicon-ok" />
+                    }
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default btn-xs" onclick="makeDefaultAddress('@address.GetValue("UserManagement:User.UserAddress.ID")');" title='@Translate("Set_default", "Set default")'><span class="glyphicon glyphicon-check"></span></button>
+                    <button type="button" class="btn btn-default btn-xs" onclick="updateAddress('@address.GetValue("UserManagement:User.UserAddress.ID")');" title='@Translate("Edit_address", "Edit address")'><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-default btn-xs" onclick="deleteAddress('@address.GetValue("UserManagement:User.UserAddress.ID")');" title='@Translate("Delete_address", "Delete address")'><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-<br />
-@if(!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl"))){
-	<a href="@GetValue("UserManagement:User.DetailUrl")"><button type="button" class="btn btn-default">Back to detail view</button></a>
-}
 
-<input type="submit" id="submitter" onclick="addAddress();" value="@Translate("Add_address", "Add address")" class ="btn btn-default" />
+<div>
+    @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.DetailUrl")))
+    {
+        <a href="@GetValue("UserManagement:User.DetailUrl")" class="btn btn-default">@Translate("Back_to_profile", "Back to profile")</a>
+    }
+    <button type="submit" onclick="addAddress();" class="btn btn-primary">@Translate("Add_address", "Add address")</button>
+</div>
 @GetValue("UserManagement:User.ManageAddresses.FormEnd")
-<br />
