@@ -1,15 +1,10 @@
-﻿<table>
-	<tr>
-		<td colspan="2"><!--@Translate("searchfor","Your search for ") <strong>'@GetValue("DwSearchPhrase")'</strong><!--@Translate("gave"," gave")--> @GetValue("DwSearchResults") <!--@Translate("results","result(s). Now showing page")--> @GetValue("DwSearchResultPage") <!--@Translate("of","of")-->af @GetValue("DwSearchResultPages"). <td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-    </table>
-<table class="table">
+﻿<!--@Translate("searchfor","Your search for ") <strong>'@GetValue("DwSearchPhrase")'</strong><!--@Translate("gave"," gave")--> @GetValue("DwSearchResults") <!--@Translate("results","result(s). Now showing page")--> @GetValue("DwSearchResultPage") <!--@Translate("of","of")-->af @GetValue("DwSearchResultPages").
+	<ul class="list-group">
  
 	@GetValue("DwSearchResultList")
-</table>
+        
+	
+        </ul>
 
-@TemplateTags()
-<div align=right>@GetValue("DwSearchResultBack")&nbsp;&nbsp;@GetValue("DwSearchResultPageList")&nbsp;&nbsp;@GetValue("DwSearchResultForward")</div>
+
+<div align=right>@GetValue("DwSearchResultBack")&nbsp;&nbsp;@GetValue("DwSearchResultPageList")&nbsp;&nbsp;@GetValue("  ")</div>
