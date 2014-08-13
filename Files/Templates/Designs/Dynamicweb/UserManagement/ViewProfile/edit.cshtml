@@ -1,4 +1,6 @@
-﻿<div class ="header"><h2>Edit user '@GetValue("UserManagement:User.Name")'</h2></div>
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<div class ="header"><h2>Edit user '@GetValue("UserManagement:User.Name")'</h2></div>
 @foreach (LoopItem i in GetLoop("FormValidationErrors")){
 	@i.GetValue("HeaderStart")
 		<div id="errormessages">
