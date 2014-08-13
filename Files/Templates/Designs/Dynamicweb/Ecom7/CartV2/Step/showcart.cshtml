@@ -1,65 +1,81 @@
-﻿<form name="ordersubmit" id="ordersubmit" method="post" role ="form">
-	<fieldset>
-		<h2><!--@Translate(cart, "Cart")--></h2>
-		@if(!(GetBoolean("Ecom:Order.IsEmpty"))){
-			<table id="orderdetails" class="table table-hover">
-				<tr>
-					<th><!--@Translate(productname, "Product name")--></th>
-					<th><!--@Translate(amount, "Amount")--></th>
-					<th><!--@Translate(price, "Price")--></th>
-					
-				</tr>
-				
-				@foreach (LoopItem i in GetLoop("OrderLines")){
-                 
-					<tr>
-						<td>
-							<a href="@i.GetValue("Ecom:Order:OrderLine.ProductLink")">
-								@i.GetValue("Ecom:Order:OrderLine.ProductName.Short")
-                                
-                                 @if (!string.IsNullOrWhiteSpace(i.GetString("Ecom:Order:OrderLine.ProductVariantText"))){
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-                                    @i.GetValue("Ecom:Order:OrderLine.ProductVariantText")
-                                 }
-							</a>
-						</td>
-						<td>@i.GetValue("Ecom:Order:OrderLine.Quantity")</td>
-						<td>@i.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
-					</tr>
-				
-				}
+@SnippetStart("StyleSheet")
+<style>
+    .quantity, .amount, .actions {
+        text-align: right;
+    }
+</style>
+@SnippetEnd("StyleSheet")
 
-                		@foreach (LoopItem i2 in GetLoop("BOMItems")){
-							<tr>
-								<td>@i2.GetValue("Ecom:Order:OrderLine.ProductName.Short")</td>
-								<td>@i2.GetValue("Ecom:Order:OrderLine.Quantity")</td>					
-								<td>@i2.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
-							</tr>
-						}
+@if (GetBoolean("Ecom:Order.IsEmpty"))
+{
+    <div class="alert alert-info">@Translate("Your_cart_is_empty", "Your cart is empty")</div>
+}
+else
+{
+    <table class="table orderlines">
+        <thead>
+            <tr>
+                <th class="name">@Translate("Product_name", "Product name")</th>
+                <th class="quantity">@Translate("Quantity", "Quantity")</th>
+                <th class="amount">@Translate("Price", "Price")</th>
+                <th></th>
+            </tr>
+        </thead>
 
-        
-				<tr>
-					<td><!--@Translate(paymentfee, "Paymentfee")--> @GetValue("Ecom:Order.PaymentMethod")</td>
-                    <td></td>
-					<td title="@GetValue("Ecom:Order.PaymentFee.PriceFormatted")">@GetValue("Ecom:Order.PaymentFee.PriceFormatted")</td>
-				</tr>
-				<tr>
-					<td><!--@Translate(deliveryfee, "Deliveryfee")--> @GetValue("Ecom:Order.ShippingMethod")</td>
-                    <td></td>
-					<td title="@GetValue("Ecom:Order.ShippingFee.PriceFormatted")">@GetValue("Ecom:Order.ShippingFee.PriceFormatted")</td>
-				</tr>
-				<tr class ="success">
-					<td><!--@Translate(total, "Total")--></td>
-					<td></td>
-					<td>@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</td>
-				</tr>
-			</table>
-			<a href="@GetValue("Ecom:Cart.EmptyCartLink")"><!--@Translate(emptycart, "Empty Cart")--></a>
-			<input type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")" class="btn btn-default pull-right" value="<!--@Translate(next, "Next")-->" />
-		}
-        @if ((GetBoolean("Ecom:Order.IsEmpty")))
-		{
-			<h3><!--@Translate(basketisempty, "Kurven er tom")--></h3>
-		}
-	</fieldset>
-</form>
+        <tfoot>
+            <tr class="total">
+                <th>@Translate("Total")</th>
+                <th></th>
+                <th class="amount">@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            @foreach (var line in GetLoop("OrderLines"))
+            {
+                <tr data-product-auto-id='@line.GetValue("Ecom:Product.AutoID")'>
+                    <td class="name">
+                        <a href='@line.GetValue("Ecom:Order:OrderLine.ProductLink")'>
+                            @line.GetValue("Ecom:Order:OrderLine.ProductName.Short")
+                            @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.ProductVariantText")))
+                            {
+                                @: (@line.GetString("Ecom:Order:OrderLine.ProductVariantText"))
+					}
+                        </a>
+                    </td>
+                    <td class="quantity">@line.GetValue("Ecom:Order:OrderLine.Quantity")</td>
+                    <td class="amount">@line.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                    <td class="actions">
+                        @if (line.GetBoolean("Ecom:Order:OrderLine.IsProduct"))
+                        {
+                            <form method="post">
+                                <input type="hidden" name="key" value='@line.GetValue("Ecom:Order:OrderLine.ID")' />
+                                <button class="btn" type="submit" name="CartCmd" value="IncOrderLine"><span class="glyphicon glyphicon-plus"></span></button>
+                                <button class="btn" type="submit" name="CartCmd" value='@(@line.GetInteger("Ecom:Order:OrderLine.Quantity") > 1 ? "DecOrderLine" : "DelOrderLine")'><span class="glyphicon glyphicon-minus"></span></button>
+                                <button class="btn" type="submit" name="CartCmd" value="DelOrderLine"><span class="glyphicon glyphicon-trash"></span></button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+
+                foreach (var bomItem in GetLoop("BOMItems"))
+                {
+                    <tr class="bom-item">
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.ProductName.Short")</td>
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.Quantity")</td>
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <form method="post">
+        <button class="btn" type="submit" name="CartCmd" value="emptycart"><span class="glyphicon glyphicon-trash"></span> @Translate("Empty_cart", "Empty cart")</button>
+    </form>
+}
+
