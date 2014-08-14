@@ -1,287 +1,361 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 <form name="ordersubmit" id="ordersubmit" method="post" role="form">
-    @foreach (var i in GetLoop("ValidationErrors"))
-    {
-        @i.GetValue("HeaderStart")
-        <fieldset id="validation">
-            <legend>Validation errors</legend>
-            <ul>
-                @i.GetValue("HeaderEnd")
-                <li>Error in the input field "@i.GetValue("Ecom:Cart.ValidationError.FieldName")": <a href="javascript:document.getElementById('@i.GetValue("Ecom:Cart.ValidationError.FieldSystemName")').focus();">@i.GetValue("Ecom:Cart.ValidationError.ErrorMessage")</a></li>
-                @i.GetValue("FooterStart")
-            </ul>
-        </fieldset>
-        @i.GetValue("FooterEnd")
-    }
+    <div class="form-horizontal" role="form">
+        @foreach (var i in GetLoop("ValidationErrors"))
+        {
+            @i.GetValue("HeaderStart")
+            <fieldset id="validation">
+                <legend>Validation errors</legend>
+                <ul>
+                    @i.GetValue("HeaderEnd")
+                    <li>Error in the input field "@i.GetValue("Ecom:Cart.ValidationError.FieldName")": <a href="javascript:document.getElementById('@i.GetValue("Ecom:Cart.ValidationError.FieldSystemName")').focus();">@i.GetValue("Ecom:Cart.ValidationError.ErrorMessage")</a></li>
+                    @i.GetValue("FooterStart")
+                </ul>
+            </fieldset>
+            @i.GetValue("FooterEnd")
+        }
 
 
-    <h3>Customer Information</h3>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h4>Billing address</h4>
-            <label for="EcomOrderCustomerName">Name</label>
+        <h3>Customer Information</h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Billing address</h4>
 
-            <input class ="form-control" type="text" name="EcomOrderCustomerName" id="EcomOrderCustomerName" value="@GetValue("Ecom:Order.Customer.Name")" />
-            <label for="EcomOrderCustomerEmail">E-mail</label>
-            <input class ="form-control" type="email" name="EcomOrderCustomerEmail" id="EcomOrderCustomerEmail" value="@GetValue("Ecom:Order.Customer.Email")" />
-            <label for="EcomOrderCustomerPhone">Phone</label>
-            <input class ="form-control" type="number" name="EcomOrderCustomerPhone" id="EcomOrderCustomerPhone" value="@GetValue("Ecom:Order.Customer.Phone")" />
-
-
-            @if (!Loops.Contains("UserManagement:User.UserAddresses"))
-            {
-                <label for="EcomOrderCustomerAddress">Address</label>
-                <input class ="form-control" type="text" name="EcomOrderCustomerAddress" id="EcomOrderCustomerAddress" value="@GetValue("Ecom:Order.Customer.Address")" />
-
-                <label for="EcomOrderCustomerAddress2">Address Line 2</label>
-
-                <input class ="form-control" type="text" name="EcomOrderCustomerAddress2" id="EcomOrderCustomerAddress2" value="@GetValue("Ecom:Order.Customer.Address2")" />
-
-                <label for="EcomOrderCustomerZip">Zipcode</label>
-
-                <input class ="form-control" type="number" name="EcomOrderCustomerZip" id="EcomOrderCustomerZip" value="@GetValue("Ecom:Order.Customer.Zip")" />
-
-                <label for="EcomOrderCustomerCity">City</label>
-
-                <input class ="form-control" type="text" name="EcomOrderCustomerCity" id="EcomOrderCustomerCity" value="@GetValue("Ecom:Order.Customer.City")" />
-
-                <label for="EcomOrderCustomerCountry">Country</label>
-
-                <select class="form-control" name="EcomOrderCustomerCountry" id="EcomOrderCustomerCountry">
-                    @foreach (LoopItem i in GetLoop("Countries"))
-                    {
-                        <option value="@i.GetValue("Ecom:Country.Code2")">
-                            @i.GetValue("Ecom:Country.Name")
-                        </option>
-                    }
-                </select>
-
-            }
-            else
-            {
-                <label for="customerAddress">Address</label>
-                <select id="customerAddress" class="form-control">
-
-                    @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
-                    {
-
-                        <option>
-                            @i.GetValue("UserManagement:User.UserAddress.Description")
-                        </option>
-
-                    }
-
-                </select>
-                <a href="Default.aspx?ID=@Pageview.Area.Item["UserManagementPageId"]&ObjectID=@GetValue("Ecom:Order.Customer.AccessUserID")&Action=ManageAddresses">Manage addresses</a>
-            }
-
-
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h4>Delivery Address</h4>
-
-            <label for="EcomOrderCustomerName">Name</label>
-
-            <input class ="form-control" type="text" name="EcomOrderDeliveryName" id="EcomOrderDeliveryName" value="@GetValue("Ecom:Order.Customer.Name")" />
-            <label for="EcomOrderCustomerEmail">E-mail</label>
-            <input class ="form-control" type="email" name="EcomOrderDeliveryEmail" id="EcomOrderDeliveryEmail" value="@GetValue("Ecom:Order.Customer.Email")" />
-            <label for="EcomOrderCustomerPhone">Phone</label>
-            <input class ="form-control" type="number" name="EcomOrderDeliveryPhone" id="EcomOrderDeliveryPhone" value="@GetValue("Ecom:Order.Customer.Phone")" />
-
-
-            @if (!Loops.Contains("UserManagement:User.UserAddresses"))
-            {
-                <label for="EcomOrderCustomerAddress">Address</label>
-                <input class ="form-control" type="text" name="EcomOrderDeliveryAddress" id="EcomOrderDeliveryAddress" value="@GetValue("Ecom:Order.Customer.Address")" />
-
-                <label for="EcomOrderCustomerAddress2">Address Line 2</label>
-
-                <input class ="form-control" type="text" name="EcomOrderDeliveryAddress2" id="EcomOrderDeliveryAddress2" value="@GetValue("Ecom:Order.Customer.Address2")" />
-
-                <label for="EcomOrderCustomerZip">Zipcode</label>
-
-                <input class ="form-control" type="number" name="EcomOrderDeliveryZip" id="EcomOrderDeliveryZip" value="@GetValue("Ecom:Order.Customer.Zip")" />
-
-                <label for="EcomOrderCustomerCity">City</label>
-
-                <input class ="form-control" type="text" name="EcomOrderDeliveryCity" id="EcomOrderDeliveryCity" value="@GetValue("Ecom:Order.Customer.City")" />
-
-                <label for="EcomOrderCustomerCountry">Country</label>
-
-                <select class="form-control" name="EcomOrderDeliveryCountry" id="EcomOrderDeliveryCountry">
-                    @foreach (LoopItem i in GetLoop("Countries"))
-                    {
-                        <option value="@i.GetValue("Ecom:Country.Code2")">
-                            @i.GetValue("Ecom:Country.Name")
-                        </option>
-                    }
-                </select>
-
-            }
-            else
-            {
-                <label for="customerAddress">Address</label>
-                <select id="customerAddress" class="form-control">
-
-                    @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
-                    {
-
-                        <option>
-                            @i.GetValue("UserManagement:User.UserAddress.Description")
-                        </option>
-
-                    }
-
-                </select>
-                <a href="Default.aspx?ID=@Pageview.Area.Item["UserManagementPageId"]&ObjectID=@GetValue("Ecom:Order.Customer.AccessUserID")&Action=ManageAddresses">Manage addresses</a>
-            }
-
-
-
-
-        </div>
-
-        
-        @if(string.IsNullOrWhiteSpace(GetString("Global:Extranet.Name"))){
-		
-				<a href=""Default.aspx?ID=@Pageview.Area.Item["SignInPageId"]"><button type="button" name="EcomUserLogin" id="EcomUserLogin" value="@Translate("loginhere", "Already a customer - Login here")" /></a>
-			
-		
-				<input type="checkbox" name="EcomUserCreateNew" id="EcomUserCreateNew" onclick="Page.Login.toggleLoginInformation();" 
-					@if(!string.IsNullOrWhiteSpace(GetString("Ecom:User.CreateNew"))){
-						<text>checked="checked"</text>
-					}
-                    />	
-				<label for="EcomUserCreateNew"><!--@Translate(saveascustomer, "Save me as customer")--></label>
-		
-					<label for="EcomUserCreateUserName"><!--@Translate(username, "Username")--></label>
-					<input type="text" name="EcomUserCreateUserName" id="EcomUserCreateUserName" 
-					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
-						    <text>value="@GetValue("Ecom:User.CreateNew.Username")"</text>
-					    }
-                         />
-			
-					<label for="EcomUserCreatePassword"><!--@Translate(newpassword, "New password")--></label>
-			
-					<input type="password" name="EcomUserCreatePassword" id="EcomUserCreatePassword" 
-					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
-						    <text>value="@GetValue("Ecom:User.CreateNew.Password")" </text>
-					    }
-                        />
-		
-					<label for="EcomUserCreateConfirmPassword"><!--@Translate(confirmpassword, "Confirm password")--></label>
-					<input type="password" name="EcomUserCreateConfirmPassword" id="EcomUserCreateConfirmPassword"
-					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
-						    <text>value="@GetValue("Ecom:User.CreateNew.ConfirmPassword")" </text>
-					    }
-                        />
-		}
-
-
-        
-
-    </div>
-
-
-
-    <h4>Payment and delivery</h4>
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-            @if (Loops.Contains("Paymethods"))
-            {
-                <h4>Paymentmethods</h4>
                 <div class="form-group">
-                    @foreach (var i in GetLoop("Paymethods"))
-                    {
-                        
-                        <div class="radio">
-                            <label>
-                                @if (GetBoolean("Ecom:Cart.Paymethod.IsSelected"))
-                                {
-                                    <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")" checked="checked" />
-                                    @i.GetValue("Ecom:Cart.Paymethod.Name")
-                                }
-                                else
-                                {
-                                    <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")"/>
-                                    @i.GetValue("Ecom:Cart.Paymethod.Name")
-                                }
-                            </label>
-                        </div>
-                    }
+                    <label for="EcomOrderCustomerName" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                        <input class ="form-control" type="text" name="EcomOrderCustomerName" id="EcomOrderCustomerName" value="@GetValue("Ecom:Order.Customer.Name")" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">E-mail</label>
+                    <div class="col-sm-10">
+                        <input class ="form-control" type="email" name="EcomOrderCustomerEmail" id="EcomOrderCustomerEmail" value="@GetValue("Ecom:Order.Customer.Email")" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-10">
+                        <input class ="form-control" type="number" name="EcomOrderCustomerPhone" id="EcomOrderCustomerPhone" value="@GetValue("Ecom:Order.Customer.Phone")" />
+                    </div>
                 </div>
 
-            }
-            @if (Loops.Contains("Shippingmethods"))
-            {
-                <h4>Deliverymethods</h4>
-                <div class="form-group">
-                    @foreach (var i in GetLoop("Shippingmethods"))
-                    {
-                        
-                        <div class="radio">
-                            <label>
-                                @if (GetBoolean("Ecom:Cart.Shippingmethod.IsSelected"))
-                                {
-                                    <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")" checked="checked" />
-                                    @i.GetValue("Ecom:Cart.Shippingmethod.Name")
-                                }
-                                else
-                                {
-                                    <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")"/>
-                                    @i.GetValue("Ecom:Cart.Shippingmethod.Name")
-                                }
-                            </label>
+                @if (!Loops.Contains("UserManagement:User.UserAddresses"))
+                {
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerAddress" class="col-sm-2 control-label">Address</label>
+                        <div class="col-sm-10">
+
+                            <input class ="form-control" type="text" name="EcomOrderCustomerAddress" id="EcomOrderCustomerAddress" value="@GetValue("Ecom:Order.Customer.Address")" />
                         </div>
-                    }
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerAddress2" class="col-sm-2 control-label">Address Line 2</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="text" name="EcomOrderCustomerAddress2" id="EcomOrderCustomerAddress2" value="@GetValue("Ecom:Order.Customer.Address2")" />
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerZip" class="col-sm-2 control-label">Zipcode</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="number" name="EcomOrderCustomerZip" id="EcomOrderCustomerZip" value="@GetValue("Ecom:Order.Customer.Zip")" />
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerCity" class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="text" name="EcomOrderCustomerCity" id="EcomOrderCustomerCity" value="@GetValue("Ecom:Order.Customer.City")" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerCountry" class="col-sm-2 control-label">Country</label>
+                        <div class="col-sm-10">
+
+                            <select class="form-control" name="EcomOrderCustomerCountry" id="EcomOrderCustomerCountry">
+                                @foreach (LoopItem i in GetLoop("Countries"))
+                                {
+                                    <option value="@i.GetValue("Ecom:Country.Code2")">
+                                        @i.GetValue("Ecom:Country.Name")
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label for="customerAddress" class="col-sm-2 control-label">Address</label>
+                        <div class="col-sm-10">
+                            <select id="customerAddress" class="form-control">
+
+                                @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
+                                {
+
+                                    <option>
+                                        @i.GetValue("UserManagement:User.UserAddress.Description")
+                                    </option>
+
+                                }
+
+                            </select>
+                            <a href="Default.aspx?ID=@Pageview.Area.Item["UserManagementPageId"]&ObjectID=@GetValue("Ecom:Order.Customer.AccessUserID")&Action=ManageAddresses">@Translate("Manage_addresses", "Manage addresses")</a>
+
+
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Delivery Address</h4>
+                <div class="form-group">
+                    <label for="EcomOrderCustomerName" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+
+                        <input class ="form-control" type="text" name="EcomOrderDeliveryName" id="EcomOrderDeliveryName" value="@GetValue("Ecom:Order.Customer.Name")" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">E-mail</label>
+                    <div class="col-sm-10">
+                        <input class ="form-control" type="email" name="EcomOrderDeliveryEmail" id="EcomOrderDeliveryEmail" value="@GetValue("Ecom:Order.Customer.Email")" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-10">
+                        <input class ="form-control" type="number" name="EcomOrderDeliveryPhone" id="EcomOrderDeliveryPhone" value="@GetValue("Ecom:Order.Customer.Phone")" />
+                    </div>
                 </div>
 
-            }
+                @if (!Loops.Contains("UserManagement:User.UserAddresses"))
+                {
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerAddress" class="col-sm-2 control-label">Address</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="text" name="EcomOrderDeliveryAddress" id="EcomOrderDeliveryAddress" value="@GetValue("Ecom:Order.Customer.Address")" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerAddress2" class="col-sm-2 control-label">Address Line 2</label>
+                        <div class="col-sm-10">
+
+                            <input class ="form-control" type="text" name="EcomOrderDeliveryAddress2" id="EcomOrderDeliveryAddress2" value="@GetValue("Ecom:Order.Customer.Address2")" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerZip" class="col-sm-2 control-label">Zipcode</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="number" name="EcomOrderDeliveryZip" id="EcomOrderDeliveryZip" value="@GetValue("Ecom:Order.Customer.Zip")" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerCity" class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
+                            <input class ="form-control" type="text" name="EcomOrderDeliveryCity" id="EcomOrderDeliveryCity" value="@GetValue("Ecom:Order.Customer.City")" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EcomOrderCustomerCountry" class="col-sm-2 control-label">Country</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="EcomOrderDeliveryCountry" id="EcomOrderDeliveryCountry">
+                                @foreach (LoopItem i in GetLoop("Countries"))
+                                {
+                                    <option value="@i.GetValue("Ecom:Country.Code2")">
+                                        @i.GetValue("Ecom:Country.Name")
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label for="customerAddress" class="col-sm-2 control-label">Address</label>
+                        <div class="col-sm-10">
+                            <select id="customerAddress" class="form-control">
+
+                                @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
+                                {
+
+                                    <option>
+                                        @i.GetValue("UserManagement:User.UserAddress.Description")
+                                    </option>
+
+                                }
+
+                            </select>
+                        <a href="Default.aspx?ID=@Pageview.Area.Item["UserManagementPageId"]&ObjectID=@GetValue("Ecom:Order.Customer.AccessUserID")&Action=ManageAddresses">Manage addresses</a>
+                        </div>
+
+                    </div>
+                    
+                }
 
 
 
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @if (string.IsNullOrWhiteSpace(GetString("Global:Extranet.Name")))
+                {
+		            <h4>Create new user</h4>
+                   
+                
+            
+                    <div class="form-group">
+                        <label for="EcomUserCreateUserName" class="col-sm-2 control-label">@Translate("username", "Username")</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="EcomUserCreateUserName" id="EcomUserCreateUserName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="EcomUserCreatePassword" class="col-sm-2 control-label">@Translate("New_password", "New password")</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="password" name="EcomUserCreatePassword" id="EcomUserCreatePassword" />
+                        </div>
+                    </div>   
+                    <div class="form-group">
+                        <label for="EcomUserCreateConfirmPassword" class="col-sm-2 control-label">@Translate("Confirm_password", "Confirm password")</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="password" name="EcomUserCreateConfirmPassword" id="EcomUserCreateConfirmPassword" />
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="col-sm-2"></div>
+                        <label class="col-sm-2">
+                            <input type="checkbox" name="EcomUserCreateNew" id="EcomUserCreateNew" 
+					@if (!string.IsNullOrWhiteSpace(GetString("Ecom:User.CreateNew")))
+     {
+                        <text>checked="checked"</text>
+     }
+                />
+                            @Translate("Save_me_as_customer", "Save me as customer")
+                        </label>
+
+                    </div>
+                    <h4>@Translate("Already_a_user?","Already a user?") <a href="Default.aspx?ID=@Pageview.Area.Item["SignInPageId"]">
+                        @Translate("Sign_in", "Sign in")
+                    </a></h4>
+                }
+
+
+
+            </div>
+        </div>
+
+
+
+        <h4>Payment and delivery</h4>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                @if (Loops.Contains("Paymethods"))
+                {
+                    <h4>Paymentmethods</h4>
+                    <div>
+                        @foreach (var i in GetLoop("Paymethods"))
+                        {
+                        
+                            <div class="radio">
+                                <label class="col-sm-10">
+                                    @if (GetBoolean("Ecom:Cart.Paymethod.IsSelected"))
+                                    {
+                                        <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")" checked="checked" />
+                                        @i.GetValue("Ecom:Cart.Paymethod.Name")
+                                    }
+                                    else
+                                    {
+                                        <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")"/>
+                                        @i.GetValue("Ecom:Cart.Paymethod.Name")
+                                    }
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                }
+                @if (Loops.Contains("Shippingmethods"))
+                {
+                    <h4>Deliverymethods</h4>
+                    <div>
+                        @foreach (var i in GetLoop("Shippingmethods"))
+                        {
+                        
+                            <div class="radio">
+                                <label class="col-sm-10">
+                                    @if (GetBoolean("Ecom:Cart.Shippingmethod.IsSelected"))
+                                    {
+                                        <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")" checked="checked" />
+                                        @i.GetValue("Ecom:Cart.Shippingmethod.Name")
+                                    }
+                                    else
+                                    {
+                                        <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")"/>
+                                        @i.GetValue("Ecom:Cart.Shippingmethod.Name")
+                                    }
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                }
+
+
+
+
+            </div>
 
         </div>
 
-    </div>
-    @if (Dynamicweb.Input.FormatBoolean(GetValue("Ecom:Cart.UseNewsletterSubscription")))
-    {<text>
+        @if (Dynamicweb.Input.FormatBoolean(GetValue("Ecom:Cart.UseNewsletterSubscription")))
+        {
 
-        <h4>Newsletter</h4>
-
+            <h4>Newsletter</h4>
 
 
-        <div class="checkbox">
-						<input class="form-control" type="hidden" name="EcomOrderSubscribeToNewsletter" />
-						<input type="checkbox" name="EcomOrderSubscribeToNewsletter" id="EcomOrderSubscribeToNewsletter"
+            <input class="form-control" type="hidden" name="EcomOrderSubscribeToNewsletter" />
+            <div class="checkbox">
+						
+						
+                <label for="EcomOrderSubscribeToNewsletter">
+                <input type="checkbox" name="EcomOrderSubscribeToNewsletter" id="EcomOrderSubscribeToNewsletter"
 							<!--@If Defined(Ecom:Order.Customer.NewsletterSubscribe)-->
 								checked="checked"
 							<!--@EndIf(Ecom: Order.Customer.NewsletterSubscribe)-->
 						/>
-						<label for="EcomOrderSubscribeToNewsletter">
+						
 							@Translate("Subscribe_to_newsletter", "Subscribe to newsletter")
-        </label>
+            </label>
+</div>
+		}
 
-		</text>}
-
-    </div>
+        
 
 			<h4><a href="Default.aspx?ID=@Pageview.Area.Item["TermsAndConditionsPageId"]">Terms and conditions</a></h4>
 
 
 
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" id="EcomOrderCustomerAccepted" name="EcomOrderCustomerAccepted" value="1" />
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="EcomOrderCustomerAccepted" name="EcomOrderCustomerAccepted" value="1" />
 
-            Accept terms and conditions
-        </label>
+                Accept terms and conditions
+            </label>
+        </div>
+
+        <button type="submit" name="@GetValue("CartV2.PreviousStepButtonName")" id="@GetValue("CartV2.PreviousStepButtonName")" value="Tilbage" class="submitter btn btn-default" >@Translate("Back", "Back")</button>
+        <button type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")"  class="submitter btn btn-default">@Translate("Create_order", "Create order")</button>
     </div>
-
-    <button type="submit" name="@GetValue("CartV2.PreviousStepButtonName")" id="@GetValue("CartV2.PreviousStepButtonName")" value="Tilbage" class="submitter btn btn-default" >@Translate("Back", "Back")</button>
-    <button type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")"  class="submitter btn btn-default">@Translate("Create_order", "Create order")</button>
 </form>
 
