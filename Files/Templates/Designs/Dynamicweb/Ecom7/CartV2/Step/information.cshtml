@@ -148,37 +148,61 @@
     <h4>Payment and delivery</h4>
     <div class="panel panel-default">
         <div class="panel-body">
-            Paymentmethods
-				<div class="form-group">
-                    @foreach (LoopItem i in GetLoop("Paymethods"))
+
+            @if (Loops.Contains("Paymethods"))
+            {
+                <h4>Paymentmethods</h4>
+                <div class="form-group">
+                    @foreach (var i in GetLoop("Paymethods"))
                     {
-                        if (Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Cart.Paymethod.IsSelected")))
-                        {<text>
-                        <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")" checked="checked" />&nbsp;
-		            	</text>}
-                        if (!Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Cart.Paymethod.IsSelected")))
-                        {<text>
-                        <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")" />&nbsp;
-		            	</text>}
-						<label for="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")"> @i.GetValue("Ecom:Cart.Paymethod.Name") </label>
+                        
+                        <div class="radio">
+                            <label>
+                                @if (GetBoolean("Ecom:Cart.Paymethod.IsSelected"))
+                                {
+                                    <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")" checked="checked" />
+                                    @i.GetValue("Ecom:Cart.Paymethod.Name")
+                                }
+                                else
+                                {
+                                    <input  type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@i.GetValue("Ecom:Cart.Paymethod.ID")" value="@i.GetValue("Ecom:Cart.Paymethod.ID")"/>
+                                    @i.GetValue("Ecom:Cart.Paymethod.Name")
+                                }
+                            </label>
+                        </div>
                     }
                 </div>
 
-            Deliverymethods
-	<div class="form-group">
-        @foreach (LoopItem i in GetLoop("Shippingmethods"))
-        {
-            if (Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Cart.Shippingmethod.IsSelected")))
-            {<text>
-            <input type="radio" name="EcomCartShippingmethodID" id="EcomCartShippingmethodID_@i.GetValue("Ecom:Cart.Shippingmethod.ID")" value="@i.GetValue("Ecom:Cart.Shippingmethod.ID")" checked="checked" />&nbsp;
-		            	</text>}
-         if (!Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Cart.Shippingmethod.IsSelected")))
-         {<text>
-            <input  type="radio" name="EcomCartShippingmethodID" id="EcomCartShippingmethodID_@i.GetValue("Ecom:Cart.Shippingmethod.ID")" value="@i.GetValue("Ecom:Cart.Shippingmethod.ID")" />&nbsp;
-		            	</text>}
-						<label for="EcomCartShippingmethodID_@i.GetValue("Ecom:Cart.Shippingmethod.ID")">@i.GetValue("Ecom:Cart.Shippingmethod.Name")</label><br/>
-     }
-    </div>
+            }
+            @if (Loops.Contains("Shippingmethods"))
+            {
+                <h4>Deliverymethods</h4>
+                <div class="form-group">
+                    @foreach (var i in GetLoop("Shippingmethods"))
+                    {
+                        
+                        <div class="radio">
+                            <label>
+                                @if (GetBoolean("Ecom:Cart.Shippingmethod.IsSelected"))
+                                {
+                                    <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")" checked="checked" />
+                                    @i.GetValue("Ecom:Cart.Shippingmethod.Name")
+                                }
+                                else
+                                {
+                                    <input  type="radio" name="EcomCartShippingID" id="EcomCartShippingID_@i.GetValue("Ecom:Cart.Shipping.ID")" value="@i.GetValue("Ecom:Cart.Shipping.ID")"/>
+                                    @i.GetValue("Ecom:Cart.Shippingmethod.Name")
+                                }
+                            </label>
+                        </div>
+                    }
+                </div>
+
+            }
+
+
+
+
         </div>
 
     </div>
@@ -198,7 +222,7 @@
 						/>
 						<label for="EcomOrderSubscribeToNewsletter">
 							@Translate("Subscribe_to_newsletter", "Subscribe to newsletter")
-						</label>
+        </label>
 
 		</text>}
 
@@ -215,7 +239,8 @@
             Accept terms and conditions
         </label>
     </div>
-    @TemplateTags()
-    <input type="submit" name="@GetValue("CartV2.PreviousStepButtonName")" id="@GetValue("CartV2.PreviousStepButtonName")" value="Tilbage" class="submitter btn btn-default" />
-    <input type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")" value="Afgiv ordre" class="submitter btn btn-default" />
+
+    <button type="submit" name="@GetValue("CartV2.PreviousStepButtonName")" id="@GetValue("CartV2.PreviousStepButtonName")" value="Tilbage" class="submitter btn btn-default" >@Translate("Back", "Back")</button>
+    <button type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")"  class="submitter btn btn-default">@Translate("Create_order", "Create order")</button>
 </form>
+
