@@ -60,6 +60,27 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.OldPassword.InputName")' class="col-sm-2 control-label">@Translate("Old_password", "Old password")</label>
+        <div class="col-sm-2">
+            <input name="UserManagement_Form_OldPassword" type="password" id="UserManagement_Form_OldPassword" autocomplete="off" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.NewPassword.InputName")' class="col-sm-2 control-label">@Translate("New_password", "New password")</label>
+        <div class="col-sm-2">
+            <input name="UserManagement_Form_NewPassword" type="password" id="UserManagement_Form_NewPassword" autocomplete="off" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for='@GetValue("UserManagement:User.NewPasswordConfirm.InputName")' class="col-sm-2 control-label">@Translate("Confirm_password", "Confirm password")</label>
+        <div class="col-sm-2">
+            <input name="UserManagement_Form_NewPasswordConfirm" type="password" id="UserManagement_Form_NewPasswordConfirm" autocomplete="off" class="form-control" />
+        </div>
+    </div>
+
     @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
     {
         <div class="form-group">
