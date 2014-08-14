@@ -142,7 +142,48 @@
 
 
         </div>
+
+        
+        @if(string.IsNullOrWhiteSpace(GetString("Global:Extranet.Name"))){
+		
+				<a href=""Default.aspx?ID=@Pageview.Area.Item["SignInPageId"]"><button type="button" name="EcomUserLogin" id="EcomUserLogin" value="@Translate("loginhere", "Already a customer - Login here")" /></a>
+			
+		
+				<input type="checkbox" name="EcomUserCreateNew" id="EcomUserCreateNew" onclick="Page.Login.toggleLoginInformation();" 
+					@if(!string.IsNullOrWhiteSpace(GetString("Ecom:User.CreateNew"))){
+						<text>checked="checked"</text>
+					}
+                    />	
+				<label for="EcomUserCreateNew"><!--@Translate(saveascustomer, "Save me as customer")--></label>
+		
+					<label for="EcomUserCreateUserName"><!--@Translate(username, "Username")--></label>
+					<input type="text" name="EcomUserCreateUserName" id="EcomUserCreateUserName" 
+					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
+						    <text>value="@GetValue("Ecom:User.CreateNew.Username")"</text>
+					    }
+                         />
+			
+					<label for="EcomUserCreatePassword"><!--@Translate(newpassword, "New password")--></label>
+			
+					<input type="password" name="EcomUserCreatePassword" id="EcomUserCreatePassword" 
+					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
+						    <text>value="@GetValue("Ecom:User.CreateNew.Password")" </text>
+					    }
+                        />
+		
+					<label for="EcomUserCreateConfirmPassword"><!--@Translate(confirmpassword, "Confirm password")--></label>
+					<input type="password" name="EcomUserCreateConfirmPassword" id="EcomUserCreateConfirmPassword"
+					    @if(Dynamicweb.Input.FormatBoolean(GetValue("Ecom:User.CreateNew"))){
+						    <text>value="@GetValue("Ecom:User.CreateNew.ConfirmPassword")" </text>
+					    }
+                        />
+		}
+
+
+        
+
     </div>
+
 
 
     <h4>Payment and delivery</h4>
