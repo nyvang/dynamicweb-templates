@@ -134,6 +134,7 @@
     <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\information.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\user_create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
