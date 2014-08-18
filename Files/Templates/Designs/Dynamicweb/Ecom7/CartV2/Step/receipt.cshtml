@@ -1,0 +1,180 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<div id="receipt">
+    <h2>Receipt</h2>
+    <a href="javascript:window.print();">Print this page</a></t>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="reciept">
+        <tr>
+            <td width="50%" valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="billing" class="table">
+
+                    <h3>Billing address</h3>
+        </tr>
+
+        <td valign="top">Name</td>
+        <td valign="top">@GetValue("Ecom:Order.Customer.Name")</td>
+        </tr>
+        <tr>
+            <td valign="top">E-mail</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Email")</td>
+        </tr>
+        <tr>
+            <td valign="top">Phone</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Phone")</td>
+        </tr>
+        <tr>
+            <td valign="top">Adress</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Address")</td>
+        </tr>
+        <tr>
+            <td valign="top">Adress 2</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Address2")</td>
+        </tr>
+        <tr>
+            <td valign="top">Zipcode / City</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Zip")&nbsp;@GetValue("Ecom:Order.Customer.City")</td>
+        </tr>
+        <tr>
+            <td valign="top">Country</td>
+            <td valign="top">@GetValue("Ecom:Order.Customer.Country")</td>
+        </tr>
+    </table>
+    </td>
+    <td width="50%" valign="top">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="delivery" class="table">
+            <h3>Delivery address</h3>
+            <tr>
+                <td valign="top">Name</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Name")</td>
+            </tr>
+            <tr>
+                <td valign="top">E-mail</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Email")</td>
+            </tr>
+            <tr>
+                <td valign="top">Phone</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Phone")</td>
+            </tr>
+            <tr>
+                <td valign="top">Adress</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Address")</td>
+            </tr>
+            <tr>
+                <td valign="top">Adress 2</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Address2")</td>
+            </tr>
+            <tr>
+                <td valign="top">Zipcode / City</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Zip")&nbsp;@GetValue("Ecom:Order.Delivery.City")</td>
+            </tr>
+            <tr>
+                <td valign="top">Country</td>
+                <td valign="top">@GetValue("Ecom:Order.Delivery.Country")</td>
+            </tr>
+        </table>
+    </td>
+    </tr>
+    </table>
+
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="reciept">
+        <tr>
+            <td width="50%" valign="top">
+                <h3>Orderinformations</h3>
+                <table border="0" cellspacing="0" cellpadding="0" id="orderinformations" class="table">
+                    <tr>
+                        <td valign="top">Ordernumber</td>
+                        <td valign="top">:@GetValue("Ecom:Order.ID")</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Orderdate</td>
+                        <td valign="top">:@GetValue("Ecom:Order.Date")</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Client IP</td>
+                        <td valign="top">:@GetValue("Ecom:Order.IP")</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Payment method</td>
+                        <td valign="top">:@GetValue("Ecom:Order.PaymentMethod")</td>
+                    </tr>
+                    @if (Dynamicweb.Input.FormatBoolean(GetValue("Ecom:Order.TransactionNumber")))
+                    {<text>
+                        <tr>
+                            <td valign="top">Transaction number</td>
+                            <td valign="top">:@GetValue("Ecom:Order.TransactionNumber")</td>
+                        </tr>
+                    </text>}
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="reciept">
+        <tr>
+            <td width="50%" valign="top">
+                <h3>Orderspecification</h3>
+                <table cellspacing="0" cellpadding="0" border="0" width="100%" id="orderdetails" class="table">
+                    <tr class="basketheader">
+                        <td>Product name</td>
+                        <td>Amount</td>
+                        <td>Weight</td>
+                        <td>Volume</td>
+                        <td align="right">Price</td>
+                    </tr>
+                    @foreach (LoopItem i in GetLoop("OrderLines"))
+                    {
+                        <tr class="orderline@i.GetValue(" ecom:order:orderline.type") orderline">
+                            <td nowrap>
+                                <a href="@i.GetValue("Ecom:Order:OrderLine.ProductLink")">
+                                    @i.GetValue("Ecom:Order:OrderLine.ProductName.Short")
+                                    @if (Dynamicweb.Input.FormatBoolean(i.GetValue("Ecom:Order:OrderLine.ProductVariantText")))
+                                    {<text>
+                                        (@i.GetValue("Ecom:Order:OrderLine.ProductVariantText"))
+                                    </text>}
+                                </a>
+                            </td>
+                            <td>@i.GetValue("Ecom:Order:OrderLine.Quantity")</td>
+                            <td>@i.GetValue("Ecom:Order:OrderLine.Weight")</td>
+                            <td>@i.GetValue("Ecom:Order:OrderLine.Volume")</td>
+                            <td align="right" nowrap>@i.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                        </tr>
+                        foreach (LoopItem i2 in GetLoop("BOMItems"))
+                        {
+                            <tr class="orderline">
+                                <td nowrap>@i2.GetValue("Ecom:Order:OrderLine.ProductName.Short")</td>
+                                <td nowrap>@i2.GetValue("Ecom:Order:OrderLine.Quantity")</td>
+                                <td>@i2.GetValue("Ecom:Order:OrderLine.Weight")</td>
+                                <td>@i2.GetValue("Ecom:Order:OrderLine.Volume")</td>
+                                <td nowrap>@i2.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                            </tr>
+                        }
+                    }
+                    <tr class="total">
+                        <td>Total</td>
+                        <td>@GetValue("Ecom:Order.OrderLines.TotalProductQuantity")</td>
+                        <td>@GetValue("Ecom:Order.Weight")</td>
+                        <td>@GetValue("Ecom:Order.Volume")</td>
+                        <td align="right" title="Ecom:Order.PriceWithoutFees.PriceFormatted">@GetValue("Ecom:Order.PriceWithoutFees.PriceFormatted")</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="4">Paymentfee</td>
+                        <td align="right" title="Ecom:Order.PaymentFee.PriceFormatted">@GetValue("Ecom:Order.PaymentFee.PriceFormatted")</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="4">Deliveryfee</td>
+                        <td align="right" title="Ecom:Order.ShippingFee.PriceFormatted">@GetValue("Ecom:Order.ShippingFee.PriceFormatted")</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="4">VAT</td>
+                        <td align="right" title="Ecom:Order.Price.VATFormatted">@GetValue("Ecom:Order.Price.VATFormatted")</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="4">Total with VAT</td>
+                        <td align="right" title="Ecom:Order.Price.PriceWithVATFormatted">@GetValue("Ecom:Order.Price.PriceWithVATFormatted")</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
