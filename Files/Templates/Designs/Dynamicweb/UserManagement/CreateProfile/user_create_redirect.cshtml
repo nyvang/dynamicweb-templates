@@ -1,0 +1,53 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<h2>New user '@GetValue("UserManagement:User.Name")', succesfully created</h2>
+@GetValue("UserManagement:User.FormStart")
+<table class="table" >
+    <tr>
+        <th align="left">@Translate(Name, "Name"): </th>
+        <td>@GetValue("UserManagement:User.Name")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(Email, "Email"): </th>
+        <td>@GetValue("UserManagement:User.Email")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(Username, "Username"): </th>
+        <td>@GetValue("UserManagement:User.UserName")</td>
+    </tr>
+
+    <tr>
+        <th align="left">@Translate(Phone, "Phone"): </th>
+        <td>@GetValue("UserManagement:User.Phone")</td>
+    </tr>
+
+    <tr>
+        <th align="left">@Translate(Address, "Address"): </th>
+        <td>@GetValue("UserManagement:User.Address")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(Address2, "Address 2"): </th>
+        <td>@GetValue("UserManagement:User.Address2")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(Zip, "Zip"): </th>
+        <td>@GetValue("UserManagement:User.Zip")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(City, "City"): </th>
+        <td>@GetValue("UserManagement:User.City")</td>
+    </tr>
+    <tr>
+        <th align="left">@Translate(Country, "Country"): </th>
+        <td>@GetValue("UserManagement:User.Country")</td>
+    </tr>
+
+    @if (Dynamicweb.Input.FormatBoolean(GetValue("UserManagement:User.Image.Clean")))
+    {<text>
+        <tr>
+            <th align="left">@Translate(profilepicture, "Profile picture"): </th>
+            <td><img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" border="0" /></td>
+        </tr>
+    </text>}
+</table>
+@GetValue("UserManagement:User.FormEnd")
