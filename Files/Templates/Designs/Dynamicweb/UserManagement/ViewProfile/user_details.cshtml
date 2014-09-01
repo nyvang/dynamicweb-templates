@@ -1,46 +1,58 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-<table class="table">
-    <tr>
-        <th align="left" class="col-sm-4">@Translate("Name", "Name")</th>
-        <td>@GetValue("UserManagement:User.Name")</td>
-    </tr>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Name", "Name")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.Name")</span>
+        </div>
+    </div>
 
-    <tr>
-        <th align="left" class="col-sm-4">@Translate("Username", "Username")</th>
-        <td>@GetValue("UserManagement:User.UserName")</td>
-    </tr>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Username", "Username")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.UserName")</span>
+        </div>
+    </div>
 
-    <tr>
-        <th align="left" class="col-sm-4">@Translate("Email", "Email")</th>
-        <td>@GetValue("UserManagement:User.Email")</td>
-    </tr>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Email", "Email")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.Email")</span>
+        </div>
+    </div>
 
-    <tr>
-        <th align="left" class="col-sm-4">@Translate("Phone", "Phone")</th>
-        <td>@GetValue("UserManagement:User.Phone")</td>
-    </tr>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@Translate("Phone", "Phone")</label>
+        <div class="col-sm-10">
+            <span class="form-control">@GetValue("UserManagement:User.Phone")</span>
+        </div>
+    </div>
 
     @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.Image.Clean")))
     {
-        <tr>
-            <th align="left" class="col-sm-4">@Translate("Profile_picture", "Profile picture")</th>
-            <td><img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" /></td>
-        </tr>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@Translate("Profile_picture", "Profile picture")</label>
+            <div class="col-sm-10">
+                <span class="form-control">
+                    <img src="/admin/public/getimage.aspx?image=@GetValue("UserManagement:User.Image.Clean")&amp;width=80" alt="@GetValue("UserManagement:User.Name")" />
+                </span>
+            </div>
+        </div>
     }
 
     @foreach (var field in GetLoop("UserManagement:User.CustomFields"))
     {
-        <tr>
-            <th align="left" class="col-sm-4">@field.GetValue("CustomField.Name")</th>
-            <td>@field.GetValue("CustomField.Value")</td>
-        </tr>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@field.GetValue("CustomField.Name")</label>
+            <div class="col-sm-10">
+                <span class="form-control">@field.GetValue("CustomField.Value")</span>
+            </div>
+        </div>
     }
 
-</table>
-
-    <div>
-        <div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
             @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.EditUrl")))
             {
                 <a href="@GetValue("UserManagement:User.EditUrl")" class="btn btn-default">@Translate("Edit_profile", "Edit profile")</a>
@@ -52,3 +64,4 @@
             }
         </div>
     </div>
+</div>
