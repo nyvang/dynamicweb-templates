@@ -9,9 +9,9 @@
                 var errors = GetLoop("ValidationErrors");
                 if (errors.Count > 0)
                 {
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger validation-errors">
                         <p><strong>@Translate("Error_saving_item", "Error saving item")</strong></p>
-                        <ul class="validation-errors">
+                        <ul>
                             @foreach (var error in errors)
                             {
                                 <li>@error.GetValue("ItemPublisher:Edit.Validation.FieldName"): @error.GetValue("ItemPublisher:Edit.Validation.Error")</li>

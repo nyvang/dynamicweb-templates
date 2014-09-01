@@ -1,17 +1,21 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
 <h2>Create new user</h2>
-@foreach (LoopItem i in GetLoop("FormValidationErrors"))
-{
-    @i.GetValue("HeaderStart")
-    <div id="errormessages">
-        <ul>
-            @i.GetValue("HeaderEnd")
-            <li>Error in the input field "@i.GetValue("UserManagement:User.FormValidationError.FieldNiceName")": <a href="javascript:document.getElementById('@i.GetValue("UserManagement:User.FormValidationError.FieldName")').focus();">@i.GetValue("UserManagement:User.FormValidationError.Message")</a></li>
-            @i.GetValue("FooterStart")
-        </ul>
-    </div>
-    @i.GetValue("FooterEnd")
+
+@{
+    var errors = GetLoop("FormValidationErrors");
+    if (errors.Count > 0)
+    {
+        <div class="alert alert-danger validation-errors">
+            <p><strong>@Translate("Error_saving_profile", "Error saving profile")</strong></p>
+            <ul>
+                @foreach (var error in errors)
+                {
+                    <li>@error.GetValue("UserManagement:User.FormValidationError.FieldNiceName"): @error.GetValue("UserManagement:User.FormValidationError.Message")</li>
+                }
+            </ul>
+        </div>
+    }
 }
 
 @GetValue("UserManagement:User.FormStart")
@@ -108,18 +112,11 @@
         </div>
     </div>
 
-        @foreach (LoopItem i in GetLoop("SelectableGroups"))
-        {
-            @i.GetValue("HeaderStart")
-
-            @i.GetValue("HeaderEnd");
-            @i.GetValue("UserManagement:User.SelectableGroup.Input");
-            <label for="@i.GetValue("UserManagement:User.SelectableGroup.InputName")">@i.GetValue("UserManagement:User.SelectableGroup.Name")</label>
-       
-            @i.GetValue("FooterStart")
-    
-            @i.GetValue("FooterEnd")
-        }
+    @foreach (LoopItem i in GetLoop("SelectableGroups"))
+    {
+        @i.GetValue("UserManagement:User.SelectableGroup.Input");
+        <label for="@i.GetValue("UserManagement:User.SelectableGroup.InputName")">@i.GetValue("UserManagement:User.SelectableGroup.Name")</label>
+    }
 
     <button type="submit" class="btn btn-primary">@Translate("createnewuser", "Create new user")</button>
     @GetValue("UserManagement:User.FormEnd")

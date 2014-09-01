@@ -4,11 +4,12 @@
     var errors = GetLoop("FormValidationErrors");
     if (errors.Count > 0)
     {
-        <div id="errormessages" class="alert alert-danger">
+        <div class="alert alert-danger validation-errors">
+            <p><strong>@Translate("Error_saving_profile", "Error saving profile")</strong></p>
             <ul>
                 @foreach (var error in errors)
                 {
-                    <li>Error in the input field "@error.GetValue("UserManagement:User.FormValidationError.FieldNiceName")": <a href="javascript:document.getElementById('@error.GetValue("UserManagement:User.FormValidationError.FieldName")').focus();">@error.GetValue("UserManagement:User.FormValidationError.Message")</a></li>
+                    <li>@error.GetValue("UserManagement:User.FormValidationError.FieldNiceName"): @error.GetValue("UserManagement:User.FormValidationError.Message")</li>
                 }
             </ul>
         </div>

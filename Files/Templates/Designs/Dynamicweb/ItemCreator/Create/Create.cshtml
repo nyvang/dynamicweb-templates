@@ -23,16 +23,14 @@ else if (GetString("ItemCreator:Edit.Status") != "NEW_SESSION")
     var errors = GetLoop("ValidationErrors");
     if (errors.Count > 0)
     {
-        <div id="errormessages" class="alert alert-danger">
-            @* TODO Show error messages
-                <ul>
-                    @foreach (var error in errors)
-                    {
-                        @error.TemplateTags()
-                    }
-                </ul>
-            *@
-            @Translate("Please_check_you_input", "Please check you input")
+        <div class="alert alert-danger validation-errors">
+            <p><strong>@Translate("Error_creating_item", "Error creating item")</strong></p>
+            <ul>
+                @foreach (var error in errors)
+                {
+                    <li>@error.GetValue("ItemCreator:Edit.Validation.FieldName"): @error.GetValue("ItemCreator:Edit.Validation.Error")</li>
+                }
+            </ul>
         </div>
     }
 }
