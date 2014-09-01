@@ -135,6 +135,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\user_create.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\user_create_redirect.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\receipt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
