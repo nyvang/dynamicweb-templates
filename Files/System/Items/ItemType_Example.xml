@@ -18,6 +18,7 @@
     </fields>
     <rules>
       <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
       <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Pages" />
     </rules>
     <layout>
@@ -25,6 +26,10 @@
         <group name="General" systemName="General" collapsibleState="None">
           <fields>
             <field systemName="Name" />
+          </fields>
+        </group>
+        <group name="Another group" systemName="AnotherGroup" collapsibleState="None">
+          <fields>
             <field systemName="Number" />
           </fields>
         </group>
