@@ -26,10 +26,7 @@
             </div>
 
             <div class="item-edit-submission">
-                @if (!string.IsNullOrWhiteSpace(GetString("ItemPublisher:Item.ListUrl")))
-                {
-                    <a class="btn btn-link" href='@GetValue("ItemPublisher:Edit.ListUrl")'>@Translate("Cancel", "Cancel")</a>
-                }
+                <a class="btn btn-link" href='Default.aspx?Id=@Pageview.Page.ID'>@Translate("Cancel", "Cancel")</a>
                 <button type="submit" class="btn btn-primary">@Translate("Save_changes", "Save changes")</button>
             </div>
         </form>

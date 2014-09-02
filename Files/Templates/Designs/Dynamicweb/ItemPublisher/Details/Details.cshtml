@@ -24,9 +24,6 @@
     </div>
 
     <div class="item-details-controls">
-        @if (!string.IsNullOrWhiteSpace(GetString("ItemPublisher:Item.ListUrl")))
-        {
-            <a class="btn btn-link" href='@GetValue("ItemPublisher:Item.ListUrl")'>@Translate("Back_to_list", "Back to list")</a>
-        }
+        <a class="btn btn-link" href="Default.aspx?Id=@Pageview.Page.ID">@Translate("Back_to_list", "Back to list")</a>
     </div>
 </div>
