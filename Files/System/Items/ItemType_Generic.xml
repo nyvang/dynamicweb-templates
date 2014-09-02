@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
 <items>
-  <item category="content" name="Generic" systemName="Generic" description="" icon="" largeIcon="" includeInUrlIndex="False" fieldForTitle="Name" title="">
+  <item category="content" name="Generic" systemName="Generic" description="" icon="" largeIcon="" includeInUrlIndex="False" fieldForTitle="Name" title="" inherits="">
     <fields>
       <field name="Name" systemName="Name" description="" type="System.String, mscorlib">
         <editor type="Dynamicweb.Content.Items.Editors.InputHTML5Editor, Dynamicweb">

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
 <items>
-  <item category="" name="Website properties" systemName="WebsiteProperties" description="" icon="" largeIcon="" includeInUrlIndex="False" fieldForTitle="" title="">
+  <item category="" name="Website properties" systemName="WebsiteProperties" description="" icon="" largeIcon="" includeInUrlIndex="False" fieldForTitle="" title="" inherits="">
     <fields>
       <field name="Sign in page id" systemName="SignInPageId" description="" type="System.String, mscorlib">
         <editor type="Dynamicweb.Content.Items.Editors.LinkEditor, Dynamicweb">
