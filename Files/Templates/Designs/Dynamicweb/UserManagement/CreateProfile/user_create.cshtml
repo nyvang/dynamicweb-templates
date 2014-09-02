@@ -28,18 +28,20 @@
     </div>
 
     <div class="form-group">
+        <label for='@GetValue("UserManagement:User.UserName.InputName")' class="col-sm-2 control-label">@Translate("Username", "Username")</label>
+        <div class="col-sm-10">
+            <input name="@GetValue("UserManagement:User.UserName.InputName")" type="text" id="@GetValue("UserManagement:User.UserName.InputName")" value="@GetValue("UserManagement:User.UserName")" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for='@GetValue("UserManagement:User.Email.InputName")' class="col-sm-2 control-label">@Translate("Email", "Email")</label>
         <div class="col-sm-10">
             <input name="@GetValue("UserManagement:User.Email.InputName")" type="email" id="@GetValue("UserManagement:User.Email.InputName")" value="@GetValue("UserManagement:User.Email")" class="form-control" />
         </div>
     </div>
 
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.UserName.InputName")' class="col-sm-2 control-label">@Translate("Username", "Username")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.UserName.InputName")" type="text" id="@GetValue("UserManagement:User.UserName.InputName")" value="@GetValue("UserManagement:User.UserName")" class="form-control" />
-        </div>
-    </div>
+    
 
     <div class="form-group">
         <label for='@GetValue("UserManagement:User.NewPassword.InputName")' class="col-sm-2 control-label">@Translate("password", "Password")</label>
@@ -59,41 +61,6 @@
         <label for='@GetValue("UserManagement:User.Phone.InputName")' class="col-sm-2 control-label">@Translate("Phone", "Phone")</label>
         <div class="col-sm-10">
             <input name="@GetValue("UserManagement:User.Phone.InputName")" type="tel" id="@GetValue("UserManagement:User.Phone.InputName")" value="@GetValue("UserManagement:User.Phone")" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.Address.InputName")' class="col-sm-2 control-label">@Translate("Address", "Address")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.Address.InputName")" type="text" id="@GetValue("UserManagement:User.Address.InputName")" value="@GetValue("UserManagement:User.Address")" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.Address2.InputName")' class="col-sm-2 control-label">@Translate("Address2", "Address 2")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.Address2.InputName")" type="text" id="@GetValue("UserManagement:User.Address2.InputName")" value="@GetValue("UserManagement:User.Address2")" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.Zip.InputName")' class="col-sm-2 control-label">@Translate("Zip", "Zip")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.Zip.InputName")" type="text" id="@GetValue("UserManagement:User.Zip.InputName")" value="@GetValue("UserManagement:User.Zip")" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.City.InputName")' class="col-sm-2 control-label">@Translate("City", "City")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.City.InputName")" type="text" id="@GetValue("UserManagement:User.City.InputName")" value="@GetValue("UserManagement:User.City")" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for='@GetValue("UserManagement:User.Country.InputName")' class="col-sm-2 control-label">@Translate("Country", "Country")</label>
-        <div class="col-sm-10">
-            <input name="@GetValue("UserManagement:User.Country.InputName")" type="text" id="@GetValue("UserManagement:User.Country.InputName")" value="@GetValue("UserManagement:User.Country")" class="form-control" />
         </div>
     </div>
 
