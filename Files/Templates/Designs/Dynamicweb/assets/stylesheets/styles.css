@@ -15,7 +15,11 @@
             text-align: left;
         }
 
+.form-group.required .control-label::after {
+    content: ' *';
+}
+
 .readonly .form-control {
-	border-color: transparent;
-	box-shadow: none;
+    border-color: transparent;
+    box-shadow: none;
 }
