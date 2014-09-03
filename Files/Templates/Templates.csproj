@@ -135,6 +135,7 @@
     <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\Create.cshtml" />
     <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\Details.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Partials\_ParagraphEdit.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
