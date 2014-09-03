@@ -1,21 +1,29 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 <form name="ordersubmit" id="ordersubmit" method="post" role="form">
     <div class="form-horizontal" role="form">
-        @foreach (var i in GetLoop("ValidationErrors"))
-        {
-            @i.GetValue("HeaderStart")
-            <div id="validation">
-                <h3>Validation errors</h3>
-                <ul>
-                    @i.GetValue("HeaderEnd")
-                    <li>Error in the input field "@i.GetValue("Ecom:Cart.ValidationError.FieldName")": <a href="javascript:document.getElementById('@i.GetValue("Ecom:Cart.ValidationError.FieldSystemName")').focus();">@i.GetValue("Ecom:Cart.ValidationError.ErrorMessage")</a></li>
-                    @i.GetValue("FooterStart")
-                </ul>
-            </div>
-            @i.GetValue("FooterEnd")
-        }
-
         
+
+<<<<<<< HEAD
+        
+=======
+        @{
+            var errors = GetLoop("ValidationErrors");
+            if (errors.Count > 0)
+            {
+                <div class="alert alert-danger validation-errors">
+                    <p><strong>@Translate("Validation_errors", "Validation errors")</strong></p>
+                    <ul>
+                        @foreach (var error in errors)
+                        {
+                            <li>@error.GetValue("Ecom:Cart.ValidationError.FieldName"): @error.GetValue("Ecom:Cart.ValidationError.ErrorMessage")</li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+        
+
+>>>>>>> origin/master
         <h3>Customer Information</h3>
         <div class="panel panel-default">
             <div class="panel-body">
