@@ -15,7 +15,7 @@
             @i.GetValue("FooterEnd")
         }
 
-
+        
         <h3>Customer Information</h3>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -89,17 +89,23 @@
                     <div class="form-group">
                         <label for="customerAddress" class="col-sm-2 control-label">Address</label>
                         <div class="col-sm-10">
+                            
+                              @foreach (var address in GetLoop("UserManagement:User.UserAddresses"))
+                                {
+                                    @TemplateTags()
+                                    
+
+                                }
                             <select id="customerAddress" class="form-control">
 
-                                @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
+                                @foreach (var address in GetLoop("UserManagement:User.UserAddresses"))
                                 {
-
+                                    @TemplateTags()
                                     <option>
-                                        @i.GetValue("UserManagement:User.UserAddress.Description")
+                                        @address.GetValue("UserManagement:User.UserAddress.Description")
                                     </option>
 
                                 }
-
                             </select>
                             <a href="Default.aspx?ID=@Pageview.Area.Item["UserManagementPageId"]&ObjectID=@GetValue("Ecom:Order.Customer.AccessUserID")&Action=ManageAddresses">@Translate("Manage_addresses", "Manage addresses")</a>
 
@@ -178,9 +184,9 @@
                 else
                 {
                     <div class="form-group">
-                        <label for="customerAddress" class="col-sm-2 control-label">Address</label>
+                        <label for="deliveryAddress" class="col-sm-2 control-label">Address</label>
                         <div class="col-sm-10">
-                            <select id="customerAddress" class="form-control">
+                            <select id="deliveryAddress" class="form-control">
 
                                 @foreach (LoopItem i in GetLoop("UserManagement:User.UserAddresses"))
                                 {
@@ -338,7 +344,7 @@
 							@Translate("Subscribe_to_newsletter", "Subscribe to newsletter")
             </label>
 </div>
-		}
+        }
 
         
 
