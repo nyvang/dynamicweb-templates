@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -105,12 +105,11 @@
     <Content Include="Designs\bootstrap\Extranet\Login.cshtml" />
     <Content Include="Designs\bootstrap\master\no-sidebar.cshtml" />
     <Content Include="Designs\bootstrap\master\partials\userinfo.cshtml" />
-    <Content Include="Designs\Dynamicweb\Assets\Stylesheet\Styles.css" />
+    <Content Include="Designs\Dynamicweb\Assets\Stylesheets\Styles.css" />
     <Content Include="Designs\Dynamicweb\Frontpage.cshtml" />
     <Content Include="Designs\Dynamicweb\Navigation\Pills.xslt" />
     <Content Include="Designs\Dynamicweb\Page.cshtml" />
     <Content Include="Designs\Dynamicweb\Master\Main.cshtml" />
-    <Content Include="Designs\Dynamicweb\Master\Partials\_footer_editpage.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Default.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Paragraph.cshtml" />
     <Content Include="Designs\Dynamicweb\Extranet\Login.cshtml" />
@@ -123,9 +122,7 @@
     <Content Include="Designs\Dynamicweb\ItemCreator\Create\Create.cshtml" />
     <Content Include="Designs\Dynamicweb\Filter\VariantFilter.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Module.cshtml" />
-    <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\Information.cshtml">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\Information.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom7\CartV2\Step\Receipt.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\Product\Details.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\ProductList\List.cshtml" />
@@ -136,6 +133,11 @@
     <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\Details.cshtml" />
     <Content Include="Designs\Dynamicweb\Paragraph\Partials\_ParagraphEdit.cshtml" />
     <Content Include="Designs\Dynamicweb\UserManagement\CreateProfile\Edit.cshtml" />
+    <Content Include="Designs\Dynamicweb\Master\Partials\_FooterEditPage.cshtml" />
+    <Content Include="Designs\Dynamicweb\Searchv1\Box.cshtml" />
+    <Content Include="Designs\Dynamicweb\Searchv1\Element.cshtml" />
+    <Content Include="Designs\Dynamicweb\Searchv1\List.cshtml" />
+    <Content Include="Designs\Dynamicweb\Searchv1\NoResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,3 +187,4 @@
   </Target>
   -->
 </Project>
+
