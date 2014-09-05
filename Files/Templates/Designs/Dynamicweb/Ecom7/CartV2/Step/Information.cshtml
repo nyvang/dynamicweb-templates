@@ -29,7 +29,7 @@
     if (addresses.Count > 0)
     {
         <div class="form-group">
-            <label for="@(type)Address" class="col-sm-2 control-label">Select Address</label>
+            <label for="@(type)Address" class="col-sm-2 control-label">@Translate("Select_address", "Select Address")</label>
             <div class="col-sm-10">
                 <select id="@(type)Address" class="form-control" onchange="useAddress(this, '@type')">
                     <option selected="selected">@Translate("Select_address", "Select address")</option>
@@ -51,31 +51,31 @@
     }
 
     <div class="form-group">
-        <label for="EcomOrder@(type)Address" class="col-sm-2 control-label">Address</label>
+        <label for="EcomOrder@(type)Address" class="col-sm-2 control-label">@Translate("Address", "Address")</label>
         <div class="col-sm-10">
             <input class="form-control" type="text" name="EcomOrder@(type)Address" id="EcomOrder@(type)Address" value='@GetValue("Ecom:Order."+type+".Address")' />
         </div>
     </div>
     <div class="form-group">
-        <label for="EcomOrder@(type)Address2" class="col-sm-2 control-label">Address Line 2</label>
+        <label for="EcomOrder@(type)Address2" class="col-sm-2 control-label">@Translate("Address_line_2", "Address Line 2")</label>
         <div class="col-sm-10">
             <input class="form-control" type="text" name="EcomOrder@(type)Address2" id="EcomOrder@(type)Address2" value='@GetValue("Ecom:Order."+type+".Address2")' />
         </div>
     </div>
     <div class="form-group">
-        <label for="EcomOrder@(type)Zip" class="col-sm-2 control-label">Zipcode</label>
+        <label for="EcomOrder@(type)Zip" class="col-sm-2 control-label">@Translate("Zipcode", "Zipcode")</label>
         <div class="col-sm-10">
             <input class="form-control" type="number" name="EcomOrder@(type)Zip" id="EcomOrder@(type)Zip" value='@GetValue("Ecom:Order."+type+".Zip")' />
         </div>
     </div>
     <div class="form-group">
-        <label for="EcomOrder@(type)City" class="col-sm-2 control-label">City</label>
+        <label for="EcomOrder@(type)City" class="col-sm-2 control-label">@Translate("City", "City")</label>
         <div class="col-sm-10">
             <input class="form-control" type="text" name="EcomOrder@(type)City" id="EcomOrder@(type)City" value='@GetValue("Ecom:Order."+type+".City")' />
         </div>
     </div>
     <div class="form-group">
-        <label for="EcomOrder@(type)Country" class="col-sm-2 control-label">Country</label>
+        <label for="EcomOrder@(type)Country" class="col-sm-2 control-label">@Translate("Country", "Country")</label>
         <div class="col-sm-10">
             <select class="form-control" name="EcomOrder@(type)Country" id="EcomOrder@(type)Country">
                 @foreach (var country in GetLoop("Countries"))
@@ -107,26 +107,26 @@
             }
         }
 
-        <h3>Customer Information</h3>
+        <h3>@Translate("Costumer_information", "Customer Information")</h3>
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <legend><h4>Billing address</h4></legend>
+                    <legend><h4>@Translate("Billing_address", "Billing Address")</h4></legend>
 
                     <div class="form-group">
-                        <label for="EcomOrderCustomerName" class="col-sm-2 control-label">Name</label>
+                        <label for="EcomOrderCustomerName" class="col-sm-2 control-label">@Translate("Name", "Name")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="EcomOrderCustomerName" id="EcomOrderCustomerName" value='@GetValue("Ecom:Order.Customer.Name")' />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">E-mail</label>
+                        <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">@Translate("Email", "E-mail")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="email" name="EcomOrderCustomerEmail" id="EcomOrderCustomerEmail" value='@GetValue("Ecom:Order.Customer.Email")' />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">Phone</label>
+                        <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">@Translate("Phone", "Phone")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="number" name="EcomOrderCustomerPhone" id="EcomOrderCustomerPhone" value='@GetValue("Ecom:Order.Customer.Phone")' />
                         </div>
@@ -140,22 +140,22 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <legend><h4>Delivery Address</h4></legend>
+                    <legend><h4>@Translate("Delivery_address", "Delivery Address")</h4></legend>
 
                     <div class="form-group">
-                        <label for="EcomOrderCustomerName" class="col-sm-2 control-label">Name</label>
+                        <label for="EcomOrderCustomerName" class="col-sm-2 control-label">@Translate("Name", "Name")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="EcomOrderDeliveryName" id="EcomOrderDeliveryName" value='@GetValue("Ecom:Order.Delivery.Name")' />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">E-mail</label>
+                        <label for="EcomOrderCustomerEmail" class="col-sm-2 control-label">@Translate("Email", "E-mail")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="email" name="EcomOrderDeliveryEmail" id="EcomOrderDeliveryEmail" value='@GetValue("Ecom:Order.Delivery.Email")' />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">Phone</label>
+                        <label for="EcomOrderCustomerPhone" class="col-sm-2 control-label">@Translate("Phone", "Phone")</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="number" name="EcomOrderDeliveryPhone" id="EcomOrderDeliveryPhone" value='@GetValue("Ecom:Order.Delivery.Phone")' />
                         </div>
@@ -171,7 +171,7 @@
                 <div class="panel-body">
                     @if (string.IsNullOrWhiteSpace(GetString("Global:Extranet.Name")))
                     {
-                        <legend><h4>Create new user</h4></legend>
+                        <legend><h4>@Translate("Create_new_user", "Create New User")</h4></legend>
 
                         <div class="form-group">
                             <label for="EcomUserCreateUserName" class="col-sm-2 control-label">@Translate("username", "Username")</label>
@@ -214,11 +214,11 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <legend><h4>Payment and delivery</h4></legend>
+                    <legend><h4>@Translate("Payment_and_delivery", "Payment and Delivery")</h4></legend>
 
                     @if (Loops.Contains("Paymethods"))
                     {
-                        <h4>Paymentmethods</h4>
+                        <h4>@Translate("Payment_methods", "Payment methods")</h4>
                         <div>
                             @foreach (var i in GetLoop("Paymethods"))
                             {
@@ -235,7 +235,7 @@
                     }
                     @if (Loops.Contains("Shippingmethods"))
                     {
-                        <h4>Deliverymethods</h4>
+                        <h4>@Translate("Delivery_methods", "Delivery methods")</h4>
                         <div>
                             @foreach (var i in GetLoop("Shippingmethods"))
                             {
@@ -269,7 +269,7 @@
             <fieldset>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <legend><h4>Newsletter</h4></legend>
+                        <legend><h4>@Translate("Newsletter", "Newsletter")</h4></legend>
 
 
                         <input class="form-control" type="hidden" name="EcomOrderSubscribeToNewsletter" />
@@ -290,12 +290,12 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <legend><h4><a href='Default.aspx?ID=@Pageview.Area.Item["TermsAndConditionsPageId"]'>Terms and conditions</a></h4></legend>
+                    <legend><h4><a href='Default.aspx?ID=@Pageview.Area.Item["TermsAndConditionsPageId"]'>@Translate("Terms_and_conditions", "Terms and Conditions")</a></h4></legend>
 
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="EcomOrderCustomerAccepted" name="EcomOrderCustomerAccepted" value="1" />
-                            Accept terms and conditions
+                            @Translate("Accept_terms_and_conditions", "Accept terms and conditions")
                         </label>
                     </div>
 
