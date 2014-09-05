@@ -6,17 +6,29 @@
     <div class="alert alert-success">
         @Translate("Item_created", "Item created")
     </div>
+
+    <div class="form-horizontal readonly">
+        @foreach (var group in GetLoop("ItemCreator:Item.Groups"))
+        {
+            <fieldset>
+                <legend>@group.GetValue("ItemCreator:Item.Group.Name")</legend>
+
+                @foreach (var field in group.GetLoop("ItemCreator:Item.Group.Fields"))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">@field.GetValue("ItemCreator:Item.Field.Name")</label>
+                        <div class="col-sm-10">
+                            <span class="form-control">@field.GetValue("ItemCreator:Item.Field.Value")</span>
+                        </div>
+                    </div>
+                }
+            </fieldset>
+        }
+    </div>
+
     <div>
         <a class="btn btn-link" href="Default.aspx?Id=@Pageview.Page.ID">@Translate("Create_another_item", "Create another item")</a>
     </div>
-
-    @* TODO Show the created item *@
-    foreach (var group in GetLoop("ItemCreator:Edit.Item.Groups"))
-    {
-        foreach (var field in group.GetLoop("ItemCreator:Edit.Item.Group.Fields"))
-        {
-        }
-    }
 }
 else if (GetString("ItemCreator:Edit.Status") != "NEW_SESSION")
 {
