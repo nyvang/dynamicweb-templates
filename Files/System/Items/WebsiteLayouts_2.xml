@@ -1,12 +1,13 @@
 ﻿<WebsiteItemLayouts>
   <PageItemLayouts>
-    <ItemLayout systemname="Generic" template="" />
-    <ItemLayout systemname="Page" template="" />
+    <ItemLayout systemname="Dw_Example" template="" />
+    <ItemLayout systemname="Dw_Generic" template="" />
+    <ItemLayout systemname="Dw_Page" template="" />
   </PageItemLayouts>
   <ParagraphItemLayouts>
-    <ItemLayout systemname="Generic" template="" />
-    <ItemLayout systemname="GenericRow" template="" />
-    <ItemLayout systemname="Module" template="" />
-    <ItemLayout systemname="Paragraph" template="" />
+    <ItemLayout systemname="Dw_Generic" template="" />
+    <ItemLayout systemname="Dw_GenericRow" template="" />
+    <ItemLayout systemname="Dw_Module" template="" />
+    <ItemLayout systemname="Dw_Paragraph" template="" />
   </ParagraphItemLayouts>
 </WebsiteItemLayouts>
