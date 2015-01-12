@@ -83,12 +83,23 @@ else
         </tbody>
     </table>
 
-    <form method="post">
-        <button class="btn btn-default" type="submit" name="CartCmd" value="emptycart"><span class="glyphicon glyphicon-trash"></span> @Translate("Empty_cart", "Empty cart")</button>
+            var user = Dynamicweb.Modules.UserManagement.User.get_Current(Dynamicweb.Modules.UserManagement.PagePermissionLevels.Frontend);
+            var availablePoints = user != null ? user.PointBalance : 0;
+            var cart = Dynamicweb.eCommerce.Common.Context.Cart;
+            var pointsUsedInCart = cart != null ? cart.TotalPoints : 0;
+            
+            if (availablePoints < pointsUsedInCart)
+            {
+                <div class="alert alert-warning">@String.Format(Translate("Too many points used in cart ({0:0.00}/{1:0.00})"), pointsUsedInCart, availablePoints)</div>
+            }
 
-        <button class="btn btn-primary pull-right" type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")">Next</button>
-    </form>
+            <form method="post">
+                <button class="btn btn-default" type="submit" name="CartCmd" value="emptycart"><span class="glyphicon glyphicon-trash"></span> @Translate("Empty_cart", "Empty cart")</button>
+
+                @if (availablePoints >= pointsUsedInCart)
+                {
+                    <button class="btn btn-primary pull-right" type="submit" name="@GetValue("CartV2.NextStepButtonName")" id="@GetValue("CartV2.NextStepButtonName")">Next</button>
+                }
+            </form>
 }
-
-@TemplateTags()
 
