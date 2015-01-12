@@ -51,6 +51,10 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -138,6 +142,15 @@
     <Content Include="Designs\Dynamicweb\Searchv1\Element.cshtml" />
     <Content Include="Designs\Dynamicweb\Searchv1\List.cshtml" />
     <Content Include="Designs\Dynamicweb\Searchv1\NoResult.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints\Ecom\Product\Details.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints\Ecom\ProductList\List.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints\Ecom7\CartV2\Step\ShowCart.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints\Ecom\LoyaltyPoints\Details.cshtml" />
+    <Content Include="Designs\Dynamicweb\LoyaltyPoints\Ecom\LoyaltyPoints\List.cshtml" />
+    <Content Include="packages.config" />
+    <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\QuoteList.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\QuoteDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
