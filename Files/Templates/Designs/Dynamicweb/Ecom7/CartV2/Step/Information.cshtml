@@ -305,7 +305,16 @@
 
         <div>
             <button type="submit" name='@GetValue("CartV2.PreviousStepButtonName")' id='@GetValue("CartV2.PreviousStepButtonName")' value="Tilbage" class="submitter btn btn-primary">@Translate("Back", "Back")</button>
-            <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary">@Translate("Create_order", "Create order")</button>
+            <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary">
+                @if (GetBoolean("Ecom:Cart.CheckoutToQuote"))
+                {
+                    @Translate("Get_quote", "Get quote")
+                }
+                else
+                {
+                    @Translate("Create_order", "Create order")
+                }
+            </button>
         </div>
 
 </form>
