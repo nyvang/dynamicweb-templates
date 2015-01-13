@@ -2,13 +2,13 @@
 
 @SnippetStart("StyleSheet")
 <style>
-    .quotes tbody tr {
+    .quote.list tbody tr {
         cursor: pointer;
     }
 </style>
 @SnippetEnd("StyleSheet")
 
-<div class="customer-center quotes list">
+<div class="customer-center quote list">
     @{
         var quotes = GetLoop("Quotes");
 
@@ -45,7 +45,7 @@
             <script>
                 (function () {
                     // @@see http://stackoverflow.com/questions/17147821/how-to-make-a-whole-row-in-a-table-clickable-as-a-link
-                    var items = document.querySelectorAll('.quotes tbody tr');
+                    var items = document.querySelectorAll('.quote.list tbody tr');
                     for (var i = 0, item; item = items[i]; i++) {
                         item.addEventListener('click', function (evt) {
                             document.location = this.getAttribute('data-href');

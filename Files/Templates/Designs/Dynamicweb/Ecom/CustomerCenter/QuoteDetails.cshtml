@@ -1,6 +1,6 @@
 ﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
-<div class="quotes details">
+<div class="customer-center quote details">
     <div class="row">
         <div class="col-md-6">
             <a class="btn btn-default" href='@GetValue("Ecom:CustomerCenter.Quotes.AddToCart")'>@Translate("Add to cart")</a>
@@ -67,13 +67,10 @@
         </thead>
         <tfoot>
             <tr class="total">
-                <th>@Translate("Total")</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th colspan="4">@Translate("Total")</th>
                 <th class="price">@GetValue("Ecom:Order.PriceWithoutFees.PriceFormatted")</th>
             </tr>
-            <tr class="total">
+            <tr class="fee fee-payment">
                 <td colspan="4">
                     @Translate("Payment fee")
                     @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Order.PaymentMethod")))
@@ -81,9 +78,9 @@
                         @: (@GetString("Ecom:Order.PaymentMethod"))
                     }
                 </td>
-                <td align="right" title="Ecom:Order.PaymentFee.PriceFormatted">@GetValue("Ecom:Order.PaymentFee.PriceFormatted")</td>
+                <td class="price">@GetValue("Ecom:Order.PaymentFee.PriceFormatted")</td>
             </tr>
-            <tr class="total">
+            <tr class="fee fee-shipping">
                 <td colspan="4">
                     @Translate("Shipping fee")
                     @if (!string.IsNullOrWhiteSpace(GetString("Ecom:Order.ShippingMethod")))
@@ -91,15 +88,15 @@
                         @: (@GetString("Ecom:Order.ShippingMethod"))
                     }
                 </td>
-                <td align="right" title="Ecom:Order.ShippingFee.PriceFormatted">@GetValue("Ecom:Order.ShippingFee.PriceFormatted")</td>
+                <td class="amount">@GetValue("Ecom:Order.ShippingFee.PriceFormatted")</td>
             </tr>
             <tr class="total">
                 <td colspan="4">@Translate("VAT")</td>
-                <td align="right" title="Ecom:Order.Price.VATFormatted">@GetValue("Ecom:Order.Price.VATFormatted")</td>
+                <td class="amount">@GetValue("Ecom:Order.Price.VATFormatted")</td>
             </tr>
             <tr class="total">
-                <td colspan="4">@Translate("Total with VAT")</td>
-                <td align="right" title="Ecom:Order.Price.PriceWithVATFormatted">@GetValue("Ecom:Order.Price.PriceWithVATFormatted")</td>
+                <th colspan="4">@Translate("Total with VAT")</td>
+                <th class="price">@GetValue("Ecom:Order.Price.PriceWithVATFormatted")</td>
             </tr>
         </tfoot>
         <tbody>
