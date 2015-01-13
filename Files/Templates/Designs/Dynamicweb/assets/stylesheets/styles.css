@@ -27,6 +27,10 @@
 .number,
 .price,
 .amount,
-.quantity {
+.quantity,
+.number input,
+.price input,
+.amount input,
+.quantity input {
     text-align: right;
 }
