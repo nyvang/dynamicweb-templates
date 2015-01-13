@@ -16,6 +16,12 @@
         }
 
 .readonly .form-control {
-	border-color: transparent;
-	box-shadow: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.number,
+.price,
+.quantity {
+    text-align: right;
 }
