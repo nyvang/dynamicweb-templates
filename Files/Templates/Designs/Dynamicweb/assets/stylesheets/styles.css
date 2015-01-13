@@ -15,6 +15,10 @@
             text-align: left;
         }
 
+.readonly .form-group {
+    margin-bottom: 0;
+}
+
 .readonly .form-control {
     border-color: transparent;
     box-shadow: none;
