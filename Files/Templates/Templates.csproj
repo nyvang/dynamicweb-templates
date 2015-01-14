@@ -151,6 +151,11 @@
     <Content Include="packages.config" />
     <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\QuoteList.cshtml" />
     <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\QuoteDetails.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\OrderDetails.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\CustomerCenter\OrderList.cshtml" />
+    <Content Include="Designs\Dynamicweb\Ecom\ProductList\List_Multi.cshtml" />
+    <Content Include="Designs\Dynamicweb\Master\Partials\_Minicart.cshtml" />
+    <Content Include="Designs\Dynamicweb\Minicart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
