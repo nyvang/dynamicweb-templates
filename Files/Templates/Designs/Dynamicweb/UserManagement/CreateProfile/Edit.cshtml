@@ -38,6 +38,17 @@
             <input name="@GetValue("UserManagement:User.Email.InputName")" type="email" id="@GetValue("UserManagement:User.Email.InputName")" value="@GetValue("UserManagement:User.Email")" class="form-control" />
         </div>
     </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input name="@GetValue("UserManagement:User.EmailAllowed.InputName")" type="checkbox" checked="@GetBoolean("UserManagement:User.EmailAllowed")" />
+                    @Translate("Email allowed")
+                    <span class="help-block">@Translate("Check this if you're fine with receiving marketing emails")</span>
+                </label>
+            </div>
+        </div>
+    </div>
 
     <div class="form-group">
         <label for='@GetValue("UserManagement:User.Phone.InputPhone")' class="col-sm-2 control-label">@Translate("Phone", "Phone")</label>
