@@ -158,6 +158,7 @@
     <Content Include="Designs\Dynamicweb\Ecom\ProductList\List_Multi.cshtml" />
     <Content Include="Designs\Dynamicweb\Master\Partials\_Minicart.cshtml" />
     <Content Include="Designs\Dynamicweb\Dw_Email.cshtml" />
+    <Content Include="Designs\Dynamicweb\UserManagement\ViewProfile\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
