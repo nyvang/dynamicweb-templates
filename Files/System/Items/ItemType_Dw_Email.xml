@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
 <items>
-  <item category="" name="Email" systemName="Dw_Email" description="" icon="" largeIcon="" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="" title="" inherits="">
+  <item category="" name="Email" systemName="Dw_Email" description="" icon="" largeIcon="" includeInUrlIndex="False" pageDefaultView="" fieldForTitle="" title="" inherits="">
     <fields>
       <field name="Heading" systemName="Heading" description="" type="System.String, mscorlib">
         <editor type="Dynamicweb.Content.Items.Editors.TextEditor, Dynamicweb">
