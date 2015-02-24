@@ -44,7 +44,7 @@
             </form>
 
             @* Buy with loyalty points start *@
-                var productPoints = GetDouble("Ecom:Product.DBPoints");
+                var productPoints = GetDouble("Ecom:Product.PointPrice");
                 if (productPoints > 0)
                 {
                     <span class="points">@productPoints @Translate("Points", "Points")</span>

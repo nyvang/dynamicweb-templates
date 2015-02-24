@@ -43,10 +43,9 @@
                         <button class="btn btn-primary" type="submit" name="CartCmd" value="add">@Translate("Add_to_cart", "Add to cart")</button>
                     </form>
 
-
                     @* Buy with loyalty points start *@
                     @{
-                        var productPoints = product.GetDouble("Ecom:Product.DBPoints");
+                        var productPoints = product.GetDouble("Ecom:Product.PointPrice");
                         if (productPoints > 0)
                         {
                             <span class="points">@productPoints @Translate("Points", "Points")</span>
