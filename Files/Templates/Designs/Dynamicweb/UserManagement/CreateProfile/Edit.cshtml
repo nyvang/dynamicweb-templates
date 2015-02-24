@@ -93,6 +93,16 @@
         </div>
     </div>
 
+    @foreach (var customField in GetLoop("UserManagement:User.CustomFields"))
+    {
+        <div class="form-group">
+            <label for='CustomField.AccessUser_@customField.GetValue("CustomField.SystemName")' class="col-sm-2 control-label">@Translate(customField.GetString("CustomField.Name"))</label>
+            <div class="col-sm-2">
+                @customField.GetValue("CustomField.Control");
+            </div>
+        </div>
+    }
+
     @if (!string.IsNullOrWhiteSpace(GetString("UserManagement:User.ManageAddressesUrl")))
     {
         <div class="form-group">
